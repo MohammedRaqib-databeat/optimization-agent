@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Analyzes a requested line item using historical delivery and performance data, dynamically compares it with portfolio benchmarks, and returns a data-driven optimization recommendation without modifying Salesforce records.</description>
+    <developerName>Optimize_Campaign_From_Historical_Delivery</developerName>
+    <invocationTarget>CampaignOptimizationService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Optimize_Campaign_From_Historical_Delivery</localDeveloperName>
+    <masterLabel>Optimize Campaign From Historical Delivery</masterLabel>
+    <progressIndicatorMessage>Analyzing campaign performance and optimization opportunities...</progressIndicatorMessage>
+</GenAiFunction>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Aggregates delivery, yield, and benchmark comparison across every line item belonging to the given order name.</description>
+    <developerName>Summarize_Order_Performance</developerName>
+    <invocationTarget>CampaignOrderRollupService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Summarize_Order_Performance</localDeveloperName>
+    <masterLabel>Summarize Order Performance</masterLabel>
+    <progressIndicatorMessage>Aggregating order performance...</progressIndicatorMessage>
+</GenAiFunction>

@@ -1,0 +1,150 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "success" : {
+      "title" : "Success",
+      "description" : "Indicates whether the rollup calculation completed successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "scopeName" : {
+      "title" : "Scope Name",
+      "description" : "The advertiser name the rollup was aggregated for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemCount" : {
+      "title" : "Line Item Count",
+      "description" : "Number of line items aggregated into this rollup.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalImpressions" : {
+      "title" : "Total Impressions",
+      "description" : "Total impressions summed across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalClicks" : {
+      "title" : "Total Clicks",
+      "description" : "Total clicks summed across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalRevenue" : {
+      "title" : "Total Revenue",
+      "description" : "Total revenue summed across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageCtrPercentage" : {
+      "title" : "Average CTR Percentage",
+      "description" : "Blended click-through rate across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageCpm" : {
+      "title" : "Average CPM",
+      "description" : "Blended CPM across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageFillRatePercentage" : {
+      "title" : "Average Fill Rate Percentage",
+      "description" : "Blended fill rate across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageViewabilityPercentage" : {
+      "title" : "Average Viewability Percentage",
+      "description" : "Blended viewability rate across every line item in scope.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianCtrPercentage" : {
+      "title" : "Portfolio Median CTR Percentage",
+      "description" : "Median CTR across the full historical portfolio, for benchmark comparison.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianCpm" : {
+      "title" : "Portfolio Median CPM",
+      "description" : "Median CPM across the full historical portfolio, for benchmark comparison.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianFillRatePercentage" : {
+      "title" : "Portfolio Median Fill Rate Percentage",
+      "description" : "Median fill rate across the full historical portfolio, for benchmark comparison.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianViewabilityPercentage" : {
+      "title" : "Portfolio Median Viewability Percentage",
+      "description" : "Median viewability rate across the full historical portfolio, for benchmark comparison.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemBreakdown" : {
+      "title" : "Line Item Breakdown",
+      "description" : "JSON array of per-line-item metrics in scope.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Human-readable explanation of the rollup result.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

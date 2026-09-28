@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Aggregates delivery, yield, and benchmark comparison across every line item belonging to the given advertiser name.</description>
+    <developerName>Summarize_Advertiser_Performance</developerName>
+    <invocationTarget>CampaignAdvertiserRollupService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Summarize_Advertiser_Performance</localDeveloperName>
+    <masterLabel>Summarize Advertiser Performance</masterLabel>
+    <progressIndicatorMessage>Aggregating advertiser performance...</progressIndicatorMessage>
+</GenAiFunction>

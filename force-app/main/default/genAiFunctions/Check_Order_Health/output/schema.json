@@ -1,0 +1,69 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "success" : {
+      "title" : "Success",
+      "description" : "Indicates whether the health check completed successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "orderName" : {
+      "title" : "Order Name",
+      "description" : "The order name that was checked.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemCount" : {
+      "title" : "Line Item Count",
+      "description" : "Total number of line items found in this order.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "performingWellCount" : {
+      "title" : "Performing Well Count",
+      "description" : "Number of line items classified as Performing Well.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "needsAttentionCount" : {
+      "title" : "Needs Attention Count",
+      "description" : "Number of line items classified as Needs Attention.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemHealthBreakdown" : {
+      "title" : "Line Item Health Breakdown",
+      "description" : "JSON array of per-line-item health entries: lineItemId, creative, pacingPercentage, fillRatePercentage, cpm, status (PERFORMING_WELL, NEEDS_ATTENTION, or NOT_EVALUABLE), and suggestion (a plain-language sentence, present only for NEEDS_ATTENTION).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Human-readable summary of the health check results.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

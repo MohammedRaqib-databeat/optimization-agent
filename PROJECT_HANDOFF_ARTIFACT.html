@@ -1,0 +1,716 @@
+<title>Media Cloud Ops Handoff</title>
+<style>
+:root{
+  --bg:#faf9f7;
+  --surface:#ffffff;
+  --surface-2:#f1efe9;
+  --border:#e3e0d8;
+  --text:#242220;
+  --text-dim:#5c5850;
+  --text-faint:#8a857a;
+  --accent:#3d5a4c;
+  --accent-soft:#e4ece7;
+  --warn:#8a5a2e;
+  --warn-soft:#f5ead9;
+  --danger:#8a3a34;
+  --danger-soft:#f6e4e2;
+  --ok:#2f6b45;
+  --ok-soft:#e2eee4;
+  --code-bg:#efece4;
+  --shadow: 0 1px 2px rgba(30,28,24,0.06), 0 8px 24px -12px rgba(30,28,24,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1a17;
+    --surface:#222220;
+    --surface-2:#292824;
+    --border:#3a382f;
+    --text:#efece2;
+    --text-dim:#b7b2a4;
+    --text-faint:#83806f;
+    --accent:#8fc3a5;
+    --accent-soft:#25332b;
+    --warn:#e0ab6c;
+    --warn-soft:#3a2f1e;
+    --danger:#e3968f;
+    --danger-soft:#3a2523;
+    --ok:#8fce9f;
+    --ok-soft:#20332a;
+    --code-bg:#292820;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1a17;
+  --surface:#222220;
+  --surface-2:#292824;
+  --border:#3a382f;
+  --text:#efece2;
+  --text-dim:#b7b2a4;
+  --text-faint:#83806f;
+  --accent:#8fc3a5;
+  --accent-soft:#25332b;
+  --warn:#e0ab6c;
+  --warn-soft:#3a2f1e;
+  --danger:#e3968f;
+  --danger-soft:#3a2523;
+  --ok:#8fce9f;
+  --ok-soft:#20332a;
+  --code-bg:#292820;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size:15.5px;
+  line-height:1.6;
+  margin:0;
+  padding-block: 32px 80px;
+}
+.wrap{
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,h2,h3,h4{
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  color: var(--text);
+  text-wrap: balance;
+  line-height:1.2;
+}
+
+/* ---------- Cover ---------- */
+.cover{
+  padding: 40px 0 32px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 40px;
+}
+.cover .eyebrow{
+  font-size:12.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:14px;
+}
+.cover h1{
+  font-size:clamp(28px,5vw,42px);
+  margin:0 0 10px;
+}
+.cover .sub{
+  color:var(--text-dim);
+  font-size:16.5px;
+  max-width:62ch;
+  margin-bottom:22px;
+}
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 28px;
+  font-size:13.5px;
+  color:var(--text-faint);
+}
+.meta-row b{color:var(--text-dim); font-weight:600;}
+
+/* ---------- Nav / TOC ---------- */
+.toc{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 24px;
+  margin-bottom:44px;
+  box-shadow:var(--shadow);
+}
+.toc h2{
+  font-size:15px;
+  margin:0 0 14px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--text-faint);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight:700;
+}
+.toc ol{
+  margin:0;
+  padding-left:0;
+  list-style:none;
+  columns: 2;
+  column-gap:28px;
+}
+.toc li{ break-inside: avoid; margin-bottom:8px; }
+.toc a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+  display:flex;
+  gap:8px;
+}
+.toc a:hover{ color:var(--accent); }
+.toc .num{ color:var(--text-faint); font-variant-numeric:tabular-nums; min-width:20px; }
+
+/* ---------- Sections ---------- */
+section.block{
+  margin-bottom:52px;
+  scroll-margin-top:20px;
+}
+.block-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:6px;
+}
+.block-head .idx{
+  font-family:'Fraunces',serif;
+  font-size:15px;
+  color:var(--accent);
+  font-weight:600;
+  min-width: 28px;
+}
+.block h2{
+  font-size:24px;
+  margin:0;
+}
+.block > .desc{
+  color:var(--text-dim);
+  font-size:14.5px;
+  margin: 8px 0 20px;
+  max-width:70ch;
+}
+
+.flow{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px 20px;
+  margin: 18px 0;
+  font-size:13.8px;
+  color:var(--text-dim);
+  line-height:1.7;
+  box-shadow:var(--shadow);
+}
+.flow b{ color:var(--text); }
+.flow code{ font-size:12.8px; }
+
+h3.sub{
+  font-size:16px;
+  margin: 26px 0 10px;
+  font-family:'Source Sans 3',sans-serif;
+  font-weight:700;
+  color:var(--text);
+}
+h3.sub .tag{
+  display:inline-block;
+  margin-left:8px;
+  vertical-align:middle;
+}
+
+p{ margin: 0 0 12px; }
+ul,ol{ margin:0 0 14px; padding-left:22px; }
+li{ margin-bottom:6px; }
+
+code{
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  background:var(--code-bg);
+  padding:1.5px 6px;
+  border-radius:5px;
+  font-size:0.86em;
+  color:var(--text);
+}
+pre{
+  background:var(--code-bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px 16px;
+  overflow-x:auto;
+  font-size:12.8px;
+  margin: 10px 0 16px;
+}
+pre code{ background:none; padding:0; }
+
+/* status tags */
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  padding:3px 9px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.tag.done{ background:var(--ok-soft); color:var(--ok); }
+.tag.partial{ background:var(--warn-soft); color:var(--warn); }
+.tag.blocked{ background:var(--danger-soft); color:var(--danger); }
+.tag::before{ content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+
+/* callouts */
+.callout{
+  border-radius:10px;
+  padding:13px 16px;
+  margin:14px 0;
+  font-size:13.8px;
+  border:1px solid transparent;
+}
+.callout.gotcha{ background:var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 30%, transparent); color:var(--text); }
+.callout.blocked{ background:var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); color:var(--text); }
+.callout.verified{ background:var(--ok-soft); border-color: color-mix(in srgb, var(--ok) 30%, transparent); color:var(--text); }
+.callout .label{
+  font-weight:700;
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  display:block;
+  margin-bottom:5px;
+}
+.callout.gotcha .label{ color:var(--warn); }
+.callout.blocked .label{ color:var(--danger); }
+.callout.verified .label{ color:var(--ok); }
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin: 12px 0 18px;
+  font-size:13.3px;
+}
+th,td{
+  text-align:left;
+  padding:8px 10px;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+th{
+  color:var(--text-faint);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:0.04em;
+}
+td code{ font-size:0.82em; }
+
+.file-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+  gap:10px;
+  margin: 12px 0 18px;
+}
+.file-card{
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:10px 12px;
+}
+.file-card code{ background:none; padding:0; display:block; margin-bottom:4px; word-break:break-word; }
+.file-card span{ font-size:12px; color:var(--text-faint); }
+
+hr.div{
+  border:none;
+  border-top:1px solid var(--border);
+  margin: 44px 0;
+}
+
+/* footer */
+.footer{
+  margin-top:60px;
+  padding-top:24px;
+  border-top:2px solid var(--border);
+  color:var(--text-faint);
+  font-size:13px;
+}
+
+@media (max-width: 640px){
+  .toc ol{ columns:1; }
+  .block-head{ flex-direction:column; gap:2px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<div class="wrap">
+
+  <div class="cover">
+    <div class="eyebrow">Engineering Handoff — Internal</div>
+    <h1>AI Campaign Operations Platform</h1>
+    <div class="sub">Salesforce Media Cloud build for AppExchange packaging. This document explains, in full, everything designed, built, tested, and left open across the whole project — read it top to bottom before touching the org or the repo.</div>
+    <div class="meta-row">
+      <span><b>Org alias</b> MYORG</span>
+      <span><b>Source root</b> force-app/main/default</span>
+      <span><b>Owner</b> Mohammed Raqib</span>
+      <span><b>Status as of</b> 2026-09-28</span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#vision"><span class="num">01</span> The vision &amp; the end-to-end flow</span></a></li>
+      <li><a href="#principle"><span class="num">02</span> The one architecture rule</span></a></li>
+      <li><a href="#intake"><span class="num">03</span> Intake → Opportunity</span></a></li>
+      <li><a href="#planning"><span class="num">04</span> Media planning &amp; approval</span></a></li>
+      <li><a href="#gam-core"><span class="num">05</span> GAM connector (this org, live)</span></a></li>
+      <li><a href="#push"><span class="num">06</span> Order push / delete to GAM</span></a></li>
+      <li><a href="#optimization"><span class="num">07</span> Optimization Agent</span></a></li>
+      <li><a href="#amendment"><span class="num">08</span> Amendment Quote flow</span></a></li>
+      <li><a href="#sync"><span class="num">09</span> Availability check &amp; delivery sync</span></a></li>
+      <li><a href="#multitenant"><span class="num">10</span> Multi-tenant onboarding</span></a></li>
+      <li><a href="#objects"><span class="num">11</span> Data model &amp; "no new objects" rule</span></a></li>
+      <li><a href="#gotchas"><span class="num">12</span> Platform gotchas worth knowing</span></a></li>
+      <li><a href="#status"><span class="num">13</span> Status board — what's done vs open</span></a></li>
+      <li><a href="#files"><span class="num">14</span> File map</span></a></li>
+      <li><a href="#start"><span class="num">15</span> Where to start</span></a></li>
+    </ol>
+  </div>
+
+  <!-- 01 -->
+  <section class="block" id="vision">
+    <div class="block-head"><span class="idx">01</span><h2>The vision &amp; the end-to-end flow</h2></div>
+    <p class="desc">An enterprise Campaign Planning &amp; Media Operations platform built natively on Salesforce Media Cloud, intended for the Salesforce AppExchange. Publishers/SSPs (Nexstar, CW, Versant, Inmobi, etc.) install it and resell it to their own advertiser clients.</p>
+
+    <div class="flow">
+      <b>Advertiser request</b> (Form / Email) → <b>Case</b> → validation → <b>Account / Contact / Opportunity</b> → <b>Product recommendation</b> → <b>Media Plan</b> (Quote + AdQuote, human-approved) → <b>Order</b> → <b>Push to Google Ad Manager</b> → ongoing <b>Optimization Agent</b> monitoring → human-approved <b>Amendment Quote</b> → applied back to the Order → re-pushed to GAM → delivery stats synced back into Salesforce.
+    </div>
+
+    <p><b>Non-negotiable constraint:</b> zero new custom Salesforce objects. Everything is standard objects (Account, Contact, Opportunity, Quote, Order, Case, Product2, Pricebook2, plus native Media Cloud objects like AdQuote/AdQuoteLine/AdOrderItem) with custom fields, permission sets, and Apex layered on top. Held to strictly across the whole build.</p>
+
+    <p><b>Who actually uses this:</b> real users never type a Line Item ID. They ask "how is Nike performing" or "is the Nike order on track." The agent resolves by name with disambiguation, never by ID, as the primary interface.</p>
+
+    <div class="callout gotcha">
+      <span class="label">Important, easy to miss</span>
+      The Optimization/Forecast agents currently reason over <b>CSV-simulated</b> advertiser data (e.g. "Advertiser 007", "9100063352") loaded via Salesforce Files, completely separate from the <b>real</b> Salesforce Orders built through the actual intake pipeline (Nike, Acme, Global Media, etc.). There is zero advertiser overlap between the two datasets today. Asking the Optimization Agent about "Nike" returns no match — that's correct behavior given the current architecture, not a bug. Replacing the CSV layer with real GAM-backed data is the natural next big step (see §13).
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="block" id="principle">
+    <div class="block-head"><span class="idx">02</span><h2>The one architecture rule</h2></div>
+    <p><b>Apex is a deterministic evidence engine. The agent (Atlas) interprets and explains. A human approves anything consequential.</b></p>
+    <p>Apex never invents a value, never silently picks a "final recommendation," and never writes a real, live change without an explicit human confirmation click. Every write action in this platform — applying a suggestion, creating an Order, pushing to GAM, applying an approved amendment — is gated behind <code>isConfirmationRequired</code>/<code>require_user_confirmation</code> in the agent, producing a real native Confirm/Cancel card. This rule was followed without exception across the entire build; every time it was tempting to shortcut it (e.g. having Apex auto-classify inventory eligibility), the fix was to give the agent richer evidence, not to let Apex start making the actual decision.</p>
+  </section>
+
+  <!-- 03 -->
+  <section class="block" id="intake">
+    <div class="block-head"><span class="idx">03</span><h2>Intake → Opportunity</h2></div>
+    <p class="desc">Two live channels feed the same deterministic validation pipeline.</p>
+
+    <h3 class="sub">Case-based intake <span class="tag done">Live</span></h3>
+    <p><code>CampaignCaseTrigger</code> / <code>CampaignCaseTriggerHandler</code> fire after insert/update on Case. When a Case moves to Validated, <code>CampaignIntakeService.validate()</code> checks required fields, then <code>CampaignIdentityResolutionService.resolve()</code> finds-or-creates the Account/Contact/Opportunity chain. Verified live: a single Case insert auto-created a real Opportunity.</p>
+
+    <h3 class="sub">Email-to-Case intake <span class="tag partial">Apex done, Setup step pending</span></h3>
+    <p><code>CampaignEmailIntakeHandler</code> (<code>Messaging.InboundEmailHandler</code>) creates a real Case (Campaign_Request record type) from an inbound email, populating only what an email genuinely gives for free. It deliberately does <i>not</i> try to guess structured fields (budget, dates) out of free text — it lets the same validation pipeline flag what's missing.</p>
+    <div class="callout blocked">
+      <span class="label">Manual step still needed</span>
+      The actual Email Service registration (Setup → Email Services → New Email Service, pointing at <code>CampaignEmailIntakeHandler</code>) could not be deployed via Metadata API — <code>EmailServicesFunction</code>'s XML has strict undocumented element ordering. This is a genuine 2-minute manual Setup click the org owner still needs to do. The Apex logic is deployed and proven correct independent of this.
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="block" id="planning">
+    <div class="block-head"><span class="idx">04</span><h2>Media planning &amp; approval</h2></div>
+    <p class="desc">The <code>Campaign_Planner</code> subagent, conversational, three-step, each write human-confirmed.</p>
+    <table>
+      <tr><th>Step</th><th>Action</th><th>What it does</th></tr>
+      <tr><td>1</td><td><code>Recommend_Products_for_Opportunity</code></td><td>Read-only ranked product suggestions from real Pricebook data.</td></tr>
+      <tr><td>2</td><td><code>Create_Media_Plan_from_Selected_Products</code></td><td>Human-confirmed. Creates a Draft Quote + AdQuote/AdQuoteLine.</td></tr>
+      <tr><td>3</td><td><code>Convert_Approved_Media_Plan_to_Order</code></td><td>Human-confirmed. Only runs once the Quote is Approved/Accepted. Creates a real Order + OrderItems + AdOrderItems.</td></tr>
+    </table>
+
+    <h3 class="sub">Real Approval Process (replaces manual status editing) <span class="tag done">Live</span></h3>
+    <p><code>Quote.Media_Plan_Approval</code> — a single-step Salesforce Approval Process on the standard Quote object. Entry criteria: <code>Status = 'Needs Review'</code>. Two field-update actions flip Status to <code>Approved</code> or <code>Rejected</code>. "Submit for Approval" was added to the Quote page's Highlights Panel. Verified live end to end through the real UI: Draft → Needs Review → Submit → routed to approver → Approved → Status auto-flips.</p>
+
+    <div class="callout gotcha">
+      <span class="label">Real pricing bug, fixed</span>
+      Every recommended product showed $0.00. Root cause: <code>CampaignProductSelectorService</code> correctly reads the <b>Standard</b> Price Book, but that pricebook's entries genuinely had <code>UnitPrice=0</code> — real prices only existed on separate custom rate-card pricebooks. Fixed with a one-time data migration copying each product's real price onto its Standard entry (31 of 70 entries updated). Verified live with real prices ($8, $10, $12...) after the fix.
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="block" id="gam-core">
+    <div class="block-head"><span class="idx">05</span><h2>GAM connector — this org, verified live</h2></div>
+    <p class="desc">Real OAuth JWT-Bearer authentication against Google Ad Manager, confirmed with a genuine live API call, not simulated.</p>
+    <pre><code>NETWORK DISPLAY NAME: DataBeat Consulting Private Limited
+NETWORK CODE: 23201882692
+CURRENCY: USD
+TIME ZONE: America/New_York</code></pre>
+
+    <h3 class="sub">What's configured in the org</h3>
+    <ul>
+      <li><b>Certificate</b> <code>gam_service_account_key</code> — self-signed, imported via Setup → Certificate and Key Management → Import from Keystore.</li>
+      <li><b>External Credential</b> <code>GAM API Cred OAuth</code> — Protocol <code>OAuth 2.0</code>, Flow Type <code>JWT Bearer Flow</code>. A manually-added custom JWT claim <code>scope = https://www.googleapis.com/auth/dfp</code> was required — Salesforce does not auto-embed it.</li>
+      <li><b>Named Credential</b> <code>GAM_API</code> → <code>https://ads.google.com/apis/ads/publisher/v202608</code>.</li>
+      <li><b>Apex stubs</b> — six WSDL2Apex-generated SOAP clients: Network, Company, Order, LineItem, User, Inventory, Forecast services.</li>
+    </ul>
+
+    <div class="callout gotcha">
+      <span class="label">The two pitfalls that cost the most time</span>
+      <b>1.</b> Salesforce's plain <code>JWT</code> Authentication Protocol is <i>not</i> Google's OAuth JWT Bearer flow — it just sends your own signed assertion as the Bearer token, unexchanged. You need Protocol = <code>OAuth 2.0</code> + Flow Type = <code>JWT Bearer Flow</code> specifically for Salesforce to perform the real token exchange.<br><br>
+      <b>2.</b> Even with the right protocol, Google rejected the exchange with <code>invalid_scope</code> until a <code>scope</code> claim was manually added as a custom JWT Body Claim on the External Credential — the Scope field on the form does not do this automatically for Google's flow.
+    </div>
+
+    <div class="callout gotcha">
+      <span class="label">WSDL2Apex gotcha (every Google-family WSDL)</span>
+      Any generated class literally named <code>*Exception</code> fails to compile ("Exception class must extend another Exception class") — Apex special-cases the suffix. Fix: rename them (<code>ApiExceptionInfo</code>, etc.) after confirming nothing else references the original name.
+    </div>
+
+    <p>An older, broken External Credential called <code>GAM API Cred</code> (plain <code>JWT</code> protocol) still exists — do not use or resurrect it.</p>
+  </section>
+
+  <!-- 06 -->
+  <section class="block" id="push">
+    <div class="block-head"><span class="idx">06</span><h2>Order push / delete to Google Ad Manager</h2></div>
+    <p class="desc">Two ways in: conversationally through the agent, or a button directly on the Order record.</p>
+
+    <div class="file-grid">
+      <div class="file-card"><code>GAMOrderPushService.cls</code><span>Finds/creates GAM Company + Order, builds real Line Items from OrderItems, writes GAM IDs back to AdOrderItem.</span></div>
+      <div class="file-card"><code>GAMOrderDeleteService.cls</code><span>Deletes the GAM Order; clears the Salesforce-side GAM fields on success.</span></div>
+      <div class="file-card"><code>GAMOrderButtonController.cls</code><span>@AuraEnabled wrapper for the Lightning button path, with real status detection.</span></div>
+      <div class="file-card"><code>gamOrderAction</code> (LWC)<span>Push/Delete button on the Order record page with a confirmation modal.</span></div>
+    </div>
+
+    <p><b>Verified live:</b> pushed a real Salesforce Order → real GAM Order <code>4204715699</code> with 2 real Line Items; deleted it and confirmed via a real <code>getOrdersByStatement</code> query it returns 0 results.</p>
+
+    <h3 class="sub">Real Ad Unit / creative-size mapping</h3>
+    <p>Three fields on <code>Product2</code>: <code>GAM_Ad_Unit_Name__c</code>, <code>GAM_Creative_Width__c</code>, <code>GAM_Creative_Height__c</code>. When set, the push resolves the real GAM Ad Unit by name and uses the real creative size; falls back gracefully to "first ACTIVE Ad Unit" / 300x250 when unset or not found in GAM — never throws for a bad name. Verified live: a configured product produced a real Line Item with <code>CREATIVE_SIZE: 728x90</code> and the exact targeted Ad Unit ID, not the fallback.</p>
+    <p class="desc">Honest limitation: there's no automatic targeting-mapping engine — this is a per-product config field an admin fills in. This GAM network's real Ad Units are generic news-site placements with no naming relationship to this org's actual product catalog, so there was no natural key to auto-derive one from.</p>
+
+    <div class="callout gotcha">
+      <span class="label">Abstract XSD type gotcha</span>
+      GAM's <code>performOrderAction</code> (used for delete) needs an explicit <code>xsi:type</code> on the wire for its abstract <code>orderAction</code> element. WSDL2Apex's generated stub cannot serialize this correctly no matter how the wrapper field is declared. Fixed by hand-building a raw SOAP envelope and POSTing it directly (still through the same Named Credential, so auth is unaffected). Any future action on this same abstract element needs the same raw-SOAP treatment.
+    </div>
+    <div class="callout gotcha">
+      <span class="label">@AuraEnabled vs @InvocableVariable</span>
+      Lightning silently strips every field from an <code>@AuraEnabled</code> method's return value unless each field is <i>also</i> marked <code>@AuraEnabled</code> — marking a field <code>@InvocableVariable</code> only (for Flow/Agentforce) is not enough. This caused confusing "Push Failed" toasts on calls that had actually succeeded. Fixed by mapping into separate local DTOs inside the LWC controller.
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="block" id="optimization">
+    <div class="block-head"><span class="idx">07</span><h2>Optimization Agent</h2></div>
+    <p class="desc">Continuously analyzes CSV-simulated delivery/inventory/targeting/contention data and surfaces suggestions for human review. Apex computes evidence; the agent frames it; nothing changes without a human clicking Confirm.</p>
+
+    <h3 class="sub">Response format <span class="tag done">Rewritten this session, deployed</span></h3>
+    <p>Replaced a long multi-section report with a fixed, crisp 4-part format:</p>
+    <ol>
+      <li>One line: Line Item, Advertiser, Health, Urgency.</li>
+      <li>One or two sentences on the single biggest driver — not every metric.</li>
+      <li>A numbered list of 1-3 concrete suggestions (numbering matters — "apply suggestion N" depends on it).</li>
+      <li>A closing line: "Analysis only — no changes made. Human approval required to act on any suggestion."</li>
+    </ol>
+    <p>Deep-dive detail (targeting, benchmarks, contention) is now answered only if the user actually asks for it, instead of front-loaded into every response.</p>
+
+    <h3 class="sub">Evidence engine — real inventory-eligibility scoring</h3>
+    <p><code>CampaignOptimizationService.determineInventoryEligibility()</code> compares an inventory row's placement/DMA/device/creative-size against active targeting rows and returns a real tiered result (multi-dimension match / single-dimension match / not proven), replacing a previous hardcoded "not proven" for every single row. This gives the agent genuinely defensible alternative-inventory candidates instead of always saying "cannot prove eligibility."</p>
+
+    <div class="callout verified">
+      <span class="label">Two real bugs found and fixed while building this</span>
+      <b>1.</b> Advertiser/line-item name matching was one-directional ("Advertiser 007 lifetime campaign" failed to resolve while bare "Advertiser 007" worked) — fixed to match both directions.<br>
+      <b>2.</b> The resolver never returned real Line Item IDs behind a multi-match advertiser — only a count, causing the agent to invent placeholder or hallucinated IDs. Fixed by adding a real <code>candidateLineItemIds</code> output field.
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="block" id="amendment">
+    <div class="block-head"><span class="idx">08</span><h2>Amendment Quote flow — this session's main build</h2></div>
+    <p class="desc">The full loop your lead asked for: a suggestion gets approved → a real amended proposal is generated → the client approves it → the real Order is updated → GAM is updated.</p>
+
+    <div class="flow">
+      Suggestion confirmed → <b>Amendment Quote</b> created (carries the Order's current lines + the new suggestion) → client reviews &amp; approves via the real Approval Process → <b>Order synced</b> to match the approved Quote exactly → queued <b>push to GAM</b> reflects the change in the real ad server.
+    </div>
+
+    <h3 class="sub">1 · Creating the Amendment Quote — <code>CampaignSuggestionApplicationService.apply()</code></h3>
+    <p>When a human confirms a suggestion, the service checks whether a real Order already exists for that advertiser:</p>
+    <ul>
+      <li><b>Order exists</b> → creates an <b>Amendment Quote</b>: copies the Order's current OrderItems as QuoteLineItems, adds the new suggested line, sets <code>Status = 'Needs Review'</code>, tags <code>Quote.Amends_Order__c</code> (new lookup field) pointing at the Order it amends.</li>
+      <li><b>No Order yet</b> → falls back to a standalone Draft Quote for just the suggestion (original behavior).</li>
+    </ul>
+    <div class="callout gotcha">
+      <span class="label">Opportunity-linking bug, fixed</span>
+      Amendment Quotes were initially landing on a throwaway "Advertiser - Optimization Suggestions" Opportunity instead of the Order's real original one. Fixed by resolving the Opportunity via <code>Order.QuoteId → Quote.OpportunityId</code> whenever an existing Order is found. Verified live: a new Nike Amendment Quote correctly landed on the real "Org setup opp" Opportunity.
+    </div>
+
+    <h3 class="sub">2 · Applying the approved amendment — <code>CampaignAmendmentApplicationService.applyApprovedAmendment()</code></h3>
+    <p>Once a human/client approves the Amendment Quote through the real Approval Process:</p>
+    <ol>
+      <li>Verifies the Quote is actually Approved/Accepted and actually an amendment (<code>Amends_Order__c</code> populated) — refuses otherwise with a clear message.</li>
+      <li><b>Syncs the real Order's OrderItems to exactly match the approved Quote</b>, matched by product: shared products get Quantity/UnitPrice updated, new Quote-only products get inserted, Order-only products dropped from the amendment get deleted. This is the actual mechanism by which an underperforming line gets overruled.</li>
+      <li>Enqueues a Queueable job that pushes the now-updated Order to GAM via the existing push service (kept out of the same transaction as the sync DML — Salesforce forbids a callout immediately after DML in one transaction).</li>
+    </ol>
+    <p><code>GAMOrderPushService.createGamLineItems</code> was upgraded alongside this: previously, a same-named existing GAM Line Item was left completely untouched on re-push. It now calls <code>LineItemService.updateLineItems</code> so a re-push genuinely carries the new goal/cost/end-date through to the real ad server.</p>
+
+    <div class="callout verified">
+      <span class="label">Verified live, full loop, real data</span>
+      Created a fresh Amendment Quote for Nike → submitted through the real Approval Process → approved → applied → Order 00000108's OrderItems synced correctly → queued push succeeded against real GAM (Order <code>4206270443</code>, 2 real Line Items).
+    </div>
+
+    <h3 class="sub">3 · Root-router misrouting — made safe, not fully fixed</h3>
+    <div class="callout blocked">
+      <span class="label">Known, real, open limitation</span>
+      Live testing showed Agentforce's root router (<code>sfdc_ai__DefaultEinsteinHyperClassifier</code>) consistently sends "amendment...approved...apply to order" phrasing to <code>Campaign_Planner</code>'s Order-conversion action instead of the correct amendment action — even after adding explicit routing rules naming "amendment" phrasing. This once created a real duplicate Order before being caught and deleted.<br><br>
+      <b>Real fix applied:</b> a hard guard was added directly in <code>CampaignOrderConversionService.cls</code> — it now refuses to convert any Quote with <code>Amends_Order__c</code> populated, with a message redirecting to the correct action. Re-tested live: the agent still initially misroutes, but Apex now safely refuses and no bad data is created. <b>The misrouting itself is unresolved</b> — worth revisiting if the wrong-action clicks keep happening.
+    </div>
+
+    <h3 class="sub">4 · Links in chat — investigated and shelved</h3>
+    <div class="callout blocked">
+      <span class="label">Confirmed platform limitation, not a bug in our code</span>
+      Real clickable Quote/Order links were attempted (two approaches: plain URLs in text, then a rich-text HTML output field rendered as its own card). Both were blocked: Agentforce redacts any URL-shaped string to the literal text <code>URL_Redacted</code> — confirmed this happens even inside a raw HTML <code>href</code> attribute passed through a registered action output. No configurable Setup toggle was found (checked Einstein Setup, Agentforce Gateway Policies — neither is the right control). <b>Decision made by the user:</b> skip clickable links for now; the agent instead always states the plain Quote ID and Order ID verbatim in chat, which is confirmed to survive reliably.
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="block" id="sync">
+    <div class="block-head"><span class="idx">09</span><h2>Availability check &amp; two-way delivery sync</h2></div>
+
+    <h3 class="sub">Pre-sale availability check <span class="tag partial">Built, blocked by network data</span></h3>
+    <p><code>GAMAvailabilityCheckService.checkAvailability(quoteId)</code> — for every AdQuoteLine on a media plan, builds a prospective (never-saved) GAM Line Item and calls <code>ForecastService.getAvailabilityForecast</code>, returning a deterministic FULLY_AVAILABLE / PARTIALLY_AVAILABLE / UNAVAILABLE classification. Apex computes the comparison; it does not recommend anything.</p>
+    <div class="callout blocked">
+      <span class="label">Genuinely blocked, not a code defect</span>
+      Every call — across multiple real media plans and Ad Units — returns GAM's real <code>ForecastingError.NO_FORECAST_YET</code>. Proven network-wide, not query-specific: even a bare-minimum test against the network's first Ad Unit hits the same error. GAM's own forecasting job hasn't accumulated enough historical traffic on this test network yet. This cannot be fixed from the Salesforce side — it needs either time on this network or a different network with an established forecast history to verify against.
+    </div>
+
+    <h3 class="sub">Two-way delivery sync <span class="tag done">Live</span></h3>
+    <p><code>GAMDeliverySyncBatch</code> (Batchable, scope 25) pulls real delivered impressions/clicks/status from GAM's LineItemService for every AdOrderItem genuinely pushed to GAM, batching multiple Line Item IDs into one query per chunk. <code>GAMDeliverySyncSchedulerJob</code> runs it hourly or on demand. Kept deliberately separate from the CSV-backed Optimization pipeline so that pipeline is never disturbed.</p>
+    <p>Verified live against 12 real AdOrderItem records — 0 errors, real <code>GAM_Delivery_Status__c</code> and <code>GAM_Last_Synced__c</code> values confirmed by direct query.</p>
+    <div class="callout gotcha">
+      <span class="label">Batch Apex callout limit</span>
+      Batch classes only get 1 callout per <code>execute()</code> unless they also implement <code>Database.AllowsCallouts</code> — the first real callout failed with <code>Too many callouts: 1</code>, an easy one to miss since the code compiles and even runs its first chunk before failing.
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="block" id="multitenant">
+    <div class="block-head"><span class="idx">10</span><h2>Multi-tenant onboarding automation</h2></div>
+    <p class="desc">Everything in §05 was configured manually by a technical person. A real AppExchange client's admin cannot run <code>openssl</code>/<code>keytool</code> commands. This solves that, entirely in pure Apex — no external service, no Python, no hosting, per explicit requirement from the user's manager/VP.</p>
+
+    <div class="callout verified">
+      <span class="label">Security model, deliberately chosen and research-backed</span>
+      Per-client Google service account (not a shared "log in with Google" OAuth consent flow) — published guidance on real GAM add-ons treats service-account auth as generally safe and well-aligned with how enterprise IT actually audits/revokes API access via their own GCP IAM console.
+    </div>
+
+    <h3 class="sub">Phase 1 — <code>GAMJKSBuilder.cls</code> <span class="tag done">Deployed, validated against real keytool</span></h3>
+    <p>A pure-Apex Java KeyStore (JKS) binary writer — Salesforce's Setup UI only accepts genuine JKS, not PKCS12, and no API exists to upload a keystore programmatically, so it has to be generated and handed to the client pre-built. Given a client's pasted service-account JSON, it extracts the private key, builds a self-signed X.509 certificate from scratch, encrypts the key with Java's proprietary JKS algorithm, and assembles the full binary container including its integrity hash — all done on hex strings since Apex Blobs aren't byte-indexable.</p>
+    <p>Validated by round-tripping a generated JKS through real OpenJDK <code>keytool</code>: parsed correctly, and the recovered private key's RSA modulus was byte-identical to the original.</p>
+
+    <h3 class="sub">Phase 2 — <code>GAMOnboardingProvisioningService.cls</code> <span class="tag done">Deployed, idempotent redeploy verified live</span></h3>
+    <p>After the one manual keystore import, this auto-provisions the rest via a self-targeted Metadata API deploy (using the running admin's own session ID — no Remote Site Setting needed) of the ExternalCredential/NamedCredential/PermissionSet, using <code>ApexMinimalZip.cls</code> (a from-scratch, uncompressed-entry ZIP writer with its own CRC-32 implementation) to build the deploy payload, since Apex has no compression API. It then auto-detects the client's GAM network code via <code>getAllNetworks()</code> (the one GAM operation that works before a network code is known) and persists it to a new <code>GAM_Config__c</code> hierarchy custom setting.</p>
+    <p>The <code>gamOnboardingWizard</code> LWC drives this end to end with a real status spinner, ending on a "connected" screen showing the detected network.</p>
+
+    <div class="callout blocked">
+      <span class="label">Permanently manual — confirmed via direct API testing</span>
+      The literal "Import from Keystore" click in Setup has no API path at all (verified: the Certificate Tooling API object has zero fields for key material). A client's own IT admin adding your service account inside their own GAM Admin panel, and generating that service account JSON in Google Cloud Console in the first place, also have to happen on the client/Google side. No workaround exists on the Salesforce platform for any of these three.
+    </div>
+
+    <div class="callout gotcha">
+      <span class="label">Still open</span>
+      Only the idempotent "redeploy over already-working config" path has been verified live. The true first-time-create path, in an org that starts with none of this metadata, has not yet been tested end to end.
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="block" id="objects">
+    <div class="block-head"><span class="idx">11</span><h2>Data model &amp; the "zero new custom objects" rule</h2></div>
+    <p><code>Optimization_Change_Log__c</code> and <code>Optimization_Change_Request__c</code> (the original custom objects used for the audit trail) were <b>deleted</b> and replaced with the standard <b>Case</b> object plus six new custom fields, per an explicit decision to resolve the architecture conflict rather than keep a hybrid.</p>
+    <ul>
+      <li>A Case with <code>Optimization_Event_Type__c</code> populated = a log entry (write-only audit record).</li>
+      <li>A Case with <code>Optimization_Action_Type__c</code> populated = a change request (scheduler dedupes on <code>Status = 'Pending Approval'</code>).</li>
+      <li>Case already has a protected "Campaign Request" record type wired to the intake trigger — these new audit Cases use the default/Master record type, and the trigger handler explicitly no-ops for any other record type, confirmed safe live.</li>
+    </ul>
+    <div class="callout gotcha">
+      <span class="label">Task does not accept custom fields in this org</span>
+      Custom fields could not be added to the standard Task object at all — rejected by both Metadata API deploy and the Setup UI (no "New" button on Task's field list). Almost certainly a Media Cloud/managed-package restriction on the Activity model. Case was used instead, and works.
+    </div>
+    <p>Historical audit data (59 log rows + 4 change-request rows) was <b>not</b> migrated — a genuine, unexplained org-side issue briefly made the old objects' field values unreadable via every API path right when migration was attempted. The user explicitly chose to delete the objects anyway rather than block on low-value historical data.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="block" id="gotchas">
+    <div class="block-head"><span class="idx">12</span><h2>Platform gotchas worth knowing before you touch anything</h2></div>
+    <table>
+      <tr><th>Area</th><th>Gotcha</th></tr>
+      <tr><td>DML + callout</td><td>A callout immediately after DML in the same transaction throws "uncommitted work pending" — wrap the callout in a Queueable enqueued after the DML.</td></tr>
+      <tr><td>Batch Apex</td><td>Needs <code>Database.AllowsCallouts</code> to make more than 1 callout across <code>execute()</code> calls.</td></tr>
+      <tr><td>Agentforce actions</td><td>Deploying the Apex class alone never makes it callable — it must also be registered as a real Agent Action via Agentforce Asset Library. This org's UI has no "Add Output" for an existing action; the reliable fix is delete-and-recreate.</td></tr>
+      <tr><td>Agentforce outputs</td><td>URL-shaped strings anywhere in any output field get redacted to literal <code>URL_Redacted</code> text — no known Setup toggle exists for this.</td></tr>
+      <tr><td>Integer outputs</td><td>A known Agent Action Wizard bug mishandles Integer-typed outputs — <code>lineItemsPushed</code> is deliberately typed Decimal, don't change it back.</td></tr>
+      <tr><td>FLS disguised as schema error</td><td>A brand-new field can say "No such column" in Apex/SOQL purely because of missing Field-Level Security on the running user's permission set — looks identical to a real schema-propagation delay. Check FLS first.</td></tr>
+      <tr><td><code>sf apex run</code> logging</td><td>Ignores TraceFlags — always logs at a fixed low level. For deep callout debugging, use raw HttpRequest/response printing instead.</td></tr>
+      <tr><td>Certificate import</td><td>Only possible through the interactive Setup UI — no Metadata API, no Tooling API path exists at all.</td></tr>
+    </table>
+  </section>
+
+  <!-- 13 -->
+  <section class="block" id="status">
+    <div class="block-head"><span class="idx">13</span><h2>Status board</h2></div>
+    <table>
+      <tr><th>Capability</th><th>Status</th><th>Notes</th></tr>
+      <tr><td>Case &amp; Email intake</td><td><span class="tag partial">Mostly live</span></td><td>Email Service Setup registration still a manual click.</td></tr>
+      <tr><td>Product recommendation &amp; pricing</td><td><span class="tag done">Live</span></td><td>$0.00 pricing bug fixed and verified.</td></tr>
+      <tr><td>Media Plan → Order + real Approval Process</td><td><span class="tag done">Live</span></td><td>Verified end to end through the real UI.</td></tr>
+      <tr><td>GAM auth (this org)</td><td><span class="tag done">Live</span></td><td>Real network data confirmed via live SOAP call.</td></tr>
+      <tr><td>Order push / delete to GAM</td><td><span class="tag done">Live</span></td><td>Idempotent, safe re-push, real Ad Unit mapping.</td></tr>
+      <tr><td>Optimization Agent — crisp responses</td><td><span class="tag partial">Deployed</span></td><td>Not yet re-tested live in a fresh conversation this session.</td></tr>
+      <tr><td>Amendment Quote creation</td><td><span class="tag done">Live</span></td><td>Correct Opportunity linkage confirmed.</td></tr>
+      <tr><td>Apply approved amendment → sync Order → push GAM</td><td><span class="tag done">Live</span></td><td>Full loop verified with real records.</td></tr>
+      <tr><td>Root-router "amendment" misrouting</td><td><span class="tag blocked">Open, made safe</span></td><td>Apex guard prevents bad data; routing itself still wrong sometimes.</td></tr>
+      <tr><td>Clickable links in chat</td><td><span class="tag blocked">Shelved</span></td><td>Confirmed platform limitation; plain IDs used instead.</td></tr>
+      <tr><td>Pre-sale availability check</td><td><span class="tag blocked">Blocked externally</span></td><td>Code correct; this GAM network has no forecast data yet.</td></tr>
+      <tr><td>Two-way delivery sync</td><td><span class="tag done">Live</span></td><td>Hourly scheduler verified against real GAM stats.</td></tr>
+      <tr><td>Multi-tenant JKS builder</td><td><span class="tag done">Validated</span></td><td>Round-tripped against real keytool successfully.</td></tr>
+      <tr><td>Multi-tenant auto-provisioning</td><td><span class="tag partial">Idempotent path only</span></td><td>True first-time-create path not yet tested.</td></tr>
+      <tr><td>Optimization Agent on real (not CSV) data</td><td><span class="tag blocked">Not started</span></td><td>Natural next step now that GAM auth works.</td></tr>
+    </table>
+  </section>
+
+  <!-- 14 -->
+  <section class="block" id="files">
+    <div class="block-head"><span class="idx">14</span><h2>File map</h2></div>
+    <p class="desc">Everything lives under <code>force-app/main/default/</code>. The most important Apex classes, by area:</p>
+    <div class="file-grid">
+      <div class="file-card"><code>CampaignIntakeService.cls</code><span>Validation on new Cases.</span></div>
+      <div class="file-card"><code>CampaignIdentityResolutionService.cls</code><span>Account/Contact/Opportunity resolution.</span></div>
+      <div class="file-card"><code>CampaignEmailIntakeHandler.cls</code><span>Inbound email → Case.</span></div>
+      <div class="file-card"><code>CampaignProductSelectorService.cls</code><span>Product recommendation.</span></div>
+      <div class="file-card"><code>CampaignMediaPlanService.cls</code><span>Draft Quote/AdQuote creation.</span></div>
+      <div class="file-card"><code>CampaignOrderConversionService.cls</code><span>Approved Quote → Order (+ amendment guard).</span></div>
+      <div class="file-card"><code>GAMNetworkServiceClient.cls</code><span>Auth/network check — the standing regression test target.</span></div>
+      <div class="file-card"><code>GAMOrderPushService.cls</code><span>Push Order to GAM.</span></div>
+      <div class="file-card"><code>GAMOrderDeleteService.cls</code><span>Delete GAM Order.</span></div>
+      <div class="file-card"><code>GAMOrderButtonController.cls</code><span>Record-page push/delete button.</span></div>
+      <div class="file-card"><code>GAMAvailabilityCheckService.cls</code><span>Pre-sale forecast check.</span></div>
+      <div class="file-card"><code>GAMDeliverySyncBatch.cls</code><span>Real delivery stats sync-back.</span></div>
+      <div class="file-card"><code>CampaignDataProvider.cls</code><span>CSV-backed simulated delivery data.</span></div>
+      <div class="file-card"><code>CampaignForecastService.cls</code><span>Forecast evidence engine.</span></div>
+      <div class="file-card"><code>CampaignOptimizationService.cls</code><span>Optimization evidence engine.</span></div>
+      <div class="file-card"><code>CampaignSuggestionApplicationService.cls</code><span>Apply suggestion → Amendment Quote.</span></div>
+      <div class="file-card"><code>CampaignAmendmentApplicationService.cls</code><span>Apply approved amendment → sync Order → push GAM.</span></div>
+      <div class="file-card"><code>GAMJKSBuilder.cls</code><span>Pure-Apex JKS keystore writer.</span></div>
+      <div class="file-card"><code>ApexMinimalZip.cls</code><span>Pure-Apex ZIP writer for Metadata API deploys.</span></div>
+      <div class="file-card"><code>GAMOnboardingProvisioningService.cls</code><span>Auto-provision credentials for a new client.</span></div>
+      <div class="file-card"><code>agentscript.txt</code><span>Source of truth for the agent's reasoning instructions.</span></div>
+      <div class="file-card"><code>Campaign_Forecasting_Agent.agent</code><span>The deployed mirror of agentscript.txt.</span></div>
+      <div class="file-card"><code>test_gam_still_works.apex</code><span>Standing regression check — run after any change.</span></div>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="block" id="start">
+    <div class="block-head"><span class="idx">15</span><h2>Where to start if you're picking this up</h2></div>
+    <ol>
+      <li>Read <code>PROJECT_HANDOFF.md</code> at the repo root — this artifact is a guided summary of it; the markdown file has the full narrative detail and every real record ID referenced along the way.</li>
+      <li>Run <code>test_gam_still_works.apex</code> immediately to confirm GAM auth and the Optimization Agent's core plumbing are intact before changing anything.</li>
+      <li>Pick a thread from the status board (§13) marked <span class="tag blocked">Open</span> or <span class="tag partial">Partial</span> — the root-router misrouting fix and running the Optimization Agent against real (not CSV) GAM data are the two highest-value next steps.</li>
+      <li>Whatever you change, keep <code>agentscript.txt</code> and the deployed <code>.agent</code> bundle in sync, validate with <code>sf agent validate authoring-bundle</code>, and re-run the standing GAM regression check afterward. This was the working discipline for the whole project — don't skip it.</li>
+    </ol>
+  </section>
+
+  <div class="footer">
+    Internal engineering handoff — Media Cloud AppExchange platform. Compiled from the full build history in <code>PROJECT_HANDOFF.md</code>. Every "verified live" claim in this document was confirmed against real Salesforce/GAM data, not assumed.
+  </div>
+
+</div>

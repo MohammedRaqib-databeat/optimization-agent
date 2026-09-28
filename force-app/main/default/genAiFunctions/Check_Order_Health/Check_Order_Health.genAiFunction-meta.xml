@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lists every line item in the given order and classifies each as Performing Well or Needs Attention using Delivery Pacing, Fill Rate, and CPM only, with one plain-language suggestion for each line item that needs attention.</description>
+    <developerName>Check_Order_Health</developerName>
+    <invocationTarget>CampaignOrderHealthCheckService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Check_Order_Health</localDeveloperName>
+    <masterLabel>Check Order Health</masterLabel>
+    <progressIndicatorMessage>Checking line item health for this order...</progressIndicatorMessage>
+</GenAiFunction>

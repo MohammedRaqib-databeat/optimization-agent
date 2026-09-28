@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pacing_Healthy_At_Or_Above_Percent__c</fullName>
+    <label>Pacing Healthy At Or Above Percent</label>
+    <type>Number</type>
+    <precision>5</precision>
+    <scale>2</scale>
+    <required>true</required>
+    <description>Pacing percentage at or above which delivery is considered on-track and no pacing-related change should be suggested.</description>
+</CustomField>

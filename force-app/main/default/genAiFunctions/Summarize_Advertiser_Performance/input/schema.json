@@ -1,0 +1,14 @@
+{
+  "required" : [ "advertiserName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "advertiserName" : {
+      "title" : "Advertiser Name",
+      "description" : "The resolved advertiser name.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

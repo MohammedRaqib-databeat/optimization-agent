@@ -1,0 +1,96 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "success" : {
+      "title" : "Success",
+      "description" : "Indicates whether entity resolution completed successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "matchType" : {
+      "title" : "Match Type",
+      "description" : "EXACT_LINE_ITEM, ADVERTISER_MATCH, ORDER_MATCH, MULTIPLE_MATCHES, or NO_MATCH.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "requiresDisambiguation" : {
+      "title" : "Requires Disambiguation",
+      "description" : "True when more than one advertiser or order matched. The agent must ask the user to choose before proceeding.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "matchedLineItemId" : {
+      "title" : "Matched Line Item ID",
+      "description" : "The Line Item ID matched, when the search text was an exact Line Item ID.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "matchedAdvertiserName" : {
+      "title" : "Matched Advertiser Name",
+      "description" : "The advertiser name matched, when exactly one advertiser matched.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "matchedOrderName" : {
+      "title" : "Matched Order Name",
+      "description" : "The order name matched, when exactly one order matched.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "candidateAdvertisers" : {
+      "title" : "Candidate Advertisers",
+      "description" : "Semicolon-separated list of advertiser names that matched, when disambiguation is required.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "candidateOrders" : {
+      "title" : "Candidate Orders",
+      "description" : "Semicolon-separated list of order names that matched, when disambiguation is required.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "candidateLineItemCount" : {
+      "title" : "Candidate Line Item Count",
+      "description" : "Number of line items behind the matched advertiser or order.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Human-readable explanation of the resolution result.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

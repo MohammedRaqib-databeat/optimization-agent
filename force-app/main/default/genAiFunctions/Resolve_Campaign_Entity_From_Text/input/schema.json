@@ -1,0 +1,14 @@
+{
+  "required" : [ "searchText" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "searchText" : {
+      "title" : "Search Text",
+      "description" : "The advertiser name, order name, or Line Item ID text identified from the user's request.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

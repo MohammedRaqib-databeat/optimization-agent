@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Converts an Approved Quote/Media Plan into a Draft Order (Order, OrderItem, AdOrderItem). Only call this after the user has explicitly confirmed the conversion - this action requires Agentforce confirmation. This will fail if the underlying Quote is not already in Approved or Accepted status. The resulting Order is not pushed to any ad server.</description>
+    <developerName>Convert_Approved_Media_Plan_To_Order</developerName>
+    <invocationTarget>CampaignOrderConversionService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>true</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Convert_Approved_Media_Plan_To_Order</localDeveloperName>
+    <masterLabel>Convert Approved Media Plan To Order</masterLabel>
+    <progressIndicatorMessage>Converting the approved media plan to an order...</progressIndicatorMessage>
+</GenAiFunction>

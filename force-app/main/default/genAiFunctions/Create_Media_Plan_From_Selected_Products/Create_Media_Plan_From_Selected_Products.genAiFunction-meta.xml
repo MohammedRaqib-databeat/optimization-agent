@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates a Draft Media Plan (Quote/AdQuote/QuoteLineItem/AdQuoteLine) for an Opportunity from a human-approved list of Product IDs. Only call this after the user has confirmed which specific products to include - this action requires Agentforce confirmation. This does not check ad-server inventory availability and does not submit anything for advertiser approval.</description>
+    <developerName>Create_Media_Plan_From_Selected_Products</developerName>
+    <invocationTarget>CampaignMediaPlanService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>true</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Create_Media_Plan_From_Selected_Products</localDeveloperName>
+    <masterLabel>Create Media Plan From Selected Products</masterLabel>
+    <progressIndicatorMessage>Building the draft media plan...</progressIndicatorMessage>
+</GenAiFunction>

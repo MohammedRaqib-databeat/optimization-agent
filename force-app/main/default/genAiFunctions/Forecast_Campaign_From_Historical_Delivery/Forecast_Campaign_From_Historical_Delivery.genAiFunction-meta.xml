@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Calculates a data-driven forecast for the requested line item by reading its historical daily delivery records from the configured data source and calculating delivery pace, projected delivery, goal attainment, risk, and performance metrics.</description>
+    <developerName>Forecast_Campaign_From_Historical_Delivery</developerName>
+    <invocationTarget>CampaignForecastService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Forecast_Campaign_From_Historical_Delivery</localDeveloperName>
+    <masterLabel>Forecast Campaign From Historical Delivery</masterLabel>
+    <progressIndicatorMessage>Calculating historical delivery forecast...</progressIndicatorMessage>
+</GenAiFunction>

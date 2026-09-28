@@ -1,0 +1,321 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "adUnit" : {
+      "title" : "Ad Unit",
+      "description" : "Ad unit associated with the line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "advertiser" : {
+      "title" : "Advertiser",
+      "description" : "Advertiser associated with the line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageDailyImpressions" : {
+      "title" : "Average Daily Impressions",
+      "description" : "Average number of ad-server impressions delivered per historical reporting day.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "campaignDaysElapsed" : {
+      "title" : "Campaign Days Elapsed",
+      "description" : "Number of campaign days elapsed through the forecast as-of date.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "campaignDaysRemaining" : {
+      "title" : "Campaign Days Remaining",
+      "description" : "Number of campaign days remaining after the forecast as-of date.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "campaignEndDate" : {
+      "title" : "Campaign End Date",
+      "description" : "Campaign end date from the source data.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "campaignStartDate" : {
+      "title" : "Campaign Start Date",
+      "description" : "Campaign start date from the source data.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "cpm" : {
+      "title" : "CPM",
+      "description" : "Historical effective CPM calculated from revenue and ad-server impressions.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "creative" : {
+      "title" : "Creative",
+      "description" : "Creative associated with the line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ctrPercentage" : {
+      "title" : "CTR Percentage",
+      "description" : "Historical click-through rate calculated from clicks and impressions.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "deliveryRisk" : {
+      "title" : "Delivery Risk",
+      "description" : "Forecast delivery-risk classification calculated from observed delivery and projected delivery.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Human-readable explanation of the calculated forecast results.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "fillRatePercentage" : {
+      "title" : "Fill Rate Percentage",
+      "description" : "Historical served-impression fill rate calculated from served and unfilled impressions.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "forecastAsOfDate" : {
+      "title" : "Forecast As Of Date",
+      "description" : "Latest historical reporting date used as the forecast cutoff.",
+      "lightning:type" : "lightning__dateType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "goalPercentage" : {
+      "title" : "Goal Percentage",
+      "description" : "Goal percentage provided by the source data, when applicable.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "goalType" : {
+      "title" : "Goal Type",
+      "description" : "Primary goal type provided by the source data.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "goalUnits" : {
+      "title" : "Goal Units",
+      "description" : "Absolute primary goal units provided by the source data, when applicable.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalDays" : {
+      "title" : "Historical Days",
+      "description" : "Number of historical daily records used in the forecast.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalImpressions" : {
+      "title" : "Historical Impressions",
+      "description" : "Total historical ad-server impressions observed for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemId" : {
+      "title" : "Line Item ID",
+      "description" : "Line item identifier used for the forecast.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemType" : {
+      "title" : "Line Item Type",
+      "description" : "Line item type provided by the source data.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "pacingPercentage" : {
+      "title" : "Pacing Percentage",
+      "description" : "Calculated delivery pacing percentage against the elapsed campaign target for evaluable lifetime goals.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "projectedEndImpressions" : {
+      "title" : "Projected End Impressions",
+      "description" : "Projected total impressions at campaign end based on observed delivery rates",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "projectedGoalAttainmentPercentage" : {
+      "title" : "Projected Goal Attainment Percentage",
+      "description" : "Projected campaign-end delivery as a percentage of the absolute goal, when an absolute goal is available.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "projectedRemainingImpressions" : {
+      "title" : "Projected Remaining Impressions",
+      "description" : "Projected impressions expected during the remaining campaign period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recent7DayAverageImpressions" : {
+      "title" : "Recent 7 Day Average Impressions",
+      "description" : "Average daily impressions across the most recent seven available reporting days.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recentDeliveryTrendPercentage" : {
+      "title" : "Recent Delivery Trend Percentage",
+      "description" : "Percentage change between the recent delivery window and the preceding comparable historical window.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "requiredDailyImpressions" : {
+      "title" : "Required Daily Impressions",
+      "description" : "Average daily impressions required during the remaining campaign period to reach an evaluable absolute goal.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "status" : {
+      "title" : "Status",
+      "description" : "Forecast processing status returned by the forecasting engine.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "success" : {
+      "title" : "Success",
+      "description" : "Indicates whether the forecast operation completed successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalAdRequests" : {
+      "title" : "Total Ad Requests",
+      "description" : "Total historical ad requests observed for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalClicks" : {
+      "title" : "Total Clicks",
+      "description" : "Total historical clicks observed for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalRevenue" : {
+      "title" : "Total Revenue",
+      "description" : "Total historical ad-server revenue observed for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "totalUnfilledImpressions" : {
+      "title" : "Total Unfilled Impressions",
+      "description" : "Total historical unfilled impressions observed for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "viewabilityPercentage" : {
+      "title" : "Viewability Percentage",
+      "description" : "Historical Active View viewability percentage calculated from measurable and viewable impressions.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

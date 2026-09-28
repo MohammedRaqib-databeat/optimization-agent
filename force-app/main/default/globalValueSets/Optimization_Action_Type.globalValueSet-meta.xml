@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Optimization Action Type</masterLabel>
+    <sorted>false</sorted>
+    <customValue>
+        <fullName>INCREASE_DAILY_PACING</fullName>
+        <default>false</default>
+        <label>INCREASE_DAILY_PACING</label>
+    </customValue>
+    <customValue>
+        <fullName>DECREASE_DAILY_PACING</fullName>
+        <default>false</default>
+        <label>DECREASE_DAILY_PACING</label>
+    </customValue>
+    <customValue>
+        <fullName>REVIEW_TARGETING</fullName>
+        <default>false</default>
+        <label>REVIEW_TARGETING</label>
+    </customValue>
+    <customValue>
+        <fullName>NO_ACTION</fullName>
+        <default>false</default>
+        <label>NO_ACTION</label>
+    </customValue>
+</GlobalValueSet>

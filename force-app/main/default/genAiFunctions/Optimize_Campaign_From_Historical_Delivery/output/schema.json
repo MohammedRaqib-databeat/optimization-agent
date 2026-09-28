@@ -1,0 +1,393 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "actionType" : {
+      "title" : "Action Type",
+      "description" : "Identifies the type of optimization action recommended for the line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "adUnit" : {
+      "title" : "Ad Unit",
+      "description" : "Ad unit associated with the evaluated line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "advertiser" : {
+      "title" : "Advertiser",
+      "description" : "Advertiser associated with the evaluated line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "applyStatus" : {
+      "title" : "Apply Status",
+      "description" : "Indicates whether the recommendation has been applied. In the current POC, this remains pending human approval and does not modify campaign records.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "averageDailyImpressions" : {
+      "title" : "Average Daily Impressions",
+      "description" : "Average number of impressions delivered per day across the available historical period for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "cpm" : {
+      "title" : "CPM",
+      "description" : "Historical cost per thousand impressions calculated for the line item from the available delivery data.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "cpmVersusBenchmarkPercentage" : {
+      "title" : "CPM Versus Benchmark Percentage",
+      "description" : "Percentage difference between the line item's CPM and the portfolio median CPM used as the optimization benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "creative" : {
+      "title" : "Creative",
+      "description" : "Creative associated with the evaluated line item.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ctrPercentage" : {
+      "title" : "CTR Percentage",
+      "description" : "Historical click-through rate percentage calculated from clicks and impressions for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ctrVersusBenchmarkPercentage" : {
+      "title" : "CTR Versus Benchmark Percentage",
+      "description" : "Percentage difference between the line item's CTR and the portfolio median CTR benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "deliverySignal" : {
+      "title" : "Delivery Signal",
+      "description" : "Indicates the line item's delivery condition relative to its applicable goal, when an absolute goal is available.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "engagementSignal" : {
+      "title" : "Engagement Signal",
+      "description" : "Indicates whether the line item's CTR is strong or weak relative to the portfolio benchmark.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "expectedImpact" : {
+      "title" : "Expected Impact",
+      "description" : "Describes the expected delivery, engagement, supply, or efficiency benefit of the recommended optimization action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "explanation" : {
+      "title" : "Explanation",
+      "description" : "Human-readable summary explaining the optimization assessment, recommendation, and important supporting metrics.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "fillRatePercentage" : {
+      "title" : "Fill Rate Percentage",
+      "description" : "Historical percentage of ad requests that were successfully filled for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "fillRateVersusBenchmarkPercentage" : {
+      "title" : "Fill Rate Versus Benchmark Percentage",
+      "description" : "Percentage difference between the line item's fill rate and the portfolio median fill-rate benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "goalType" : {
+      "title" : "Goal Type",
+      "description" : "Goal type configured for the evaluated line item, such as a lifetime or percentage-based goal.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "goalUnits" : {
+      "title" : "Goal Units",
+      "description" : "Absolute goal units available for the line item when the source data provides an absolute goal.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalAdRequests" : {
+      "title" : "Historical Ad Requests",
+      "description" : "Total ad requests recorded for the line item across the historical reporting period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalClicks" : {
+      "title" : "Historical Clicks",
+      "description" : "Total clicks recorded for the line item across the historical reporting period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalImpressions" : {
+      "title" : "Historical Impressions",
+      "description" : "Total ad-server impressions recorded for the line item across the historical reporting period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalRevenue" : {
+      "title" : "Historical Revenue",
+      "description" : "Total ad-server revenue recorded for the line item across the historical reporting period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "historicalUnfilledImpressions" : {
+      "title" : "Historical Unfilled Impressions",
+      "description" : "Total impressions that were requested but remained unfilled during the historical reporting period.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "humanApprovalRequired" : {
+      "title" : "Human Approval Required",
+      "description" : "Indicates whether human approval is required before the recommended optimization can be applied.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemId" : {
+      "title" : "Line Item ID",
+      "description" : "Unique identifier of the line item that was evaluated by the optimization engine.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "lineItemType" : {
+      "title" : "Line Item Type",
+      "description" : "Type of line item associated with the evaluated campaign.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "optimizationHealth" : {
+      "title" : "Optimization Health",
+      "description" : "Overall optimization health classification based on delivery, engagement, supply, yield, and viewability signals.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "optimizationUrgency" : {
+      "title" : "Optimization Urgency",
+      "description" : "Priority level indicating how urgently the identified optimization issue should be addressed.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianCpm" : {
+      "title" : "Portfolio Median CPM",
+      "description" : "Median CPM calculated across the available portfolio line items and used as the CPM benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianCtrPercentage" : {
+      "title" : "Portfolio Median CTR Percentage",
+      "description" : "Median CTR percentage calculated across the available portfolio line items and used as the engagement benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianFillRatePercentage" : {
+      "title" : "Portfolio Median Fill Rate Percentage",
+      "description" : "Median fill-rate percentage calculated across the available portfolio line items and used as the supply benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "portfolioMedianViewabilityPercentage" : {
+      "title" : "Portfolio Median Viewability Percentage",
+      "description" : "Median viewability percentage calculated across the available portfolio line items and used as the viewability benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "rationale" : {
+      "title" : "Rationale",
+      "description" : "Explains the data-driven reason why the recommended optimization action was selected.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recent7DayAverageImpressions" : {
+      "title" : "Recent 7 Day Average Impressions",
+      "description" : "Average daily impressions delivered during the most recent seven historical reporting days available for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recentDeliveryTrendPercentage" : {
+      "title" : "Recent Delivery Trend Percentage",
+      "description" : "Percentage change in recent delivery performance compared with the preceding historical period used by the optimization engine.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "recommendedAction" : {
+      "title" : "Recommended Action",
+      "description" : "Human-readable optimization recommendation generated from the line item's delivery and performance signals.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "status" : {
+      "title" : "Status",
+      "description" : "Execution status returned by the optimization action, indicating whether the optimization analysis completed successfully or encountered an issue.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "success" : {
+      "title" : "Success",
+      "description" : "Indicates whether the optimization analysis completed successfully for the requested line item.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "supplySignal" : {
+      "title" : "Supply Signal",
+      "description" : "Indicates whether the line item's fill performance is strong or weak relative to the portfolio benchmark.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "viewabilityPercentage" : {
+      "title" : "Viewability Percentage",
+      "description" : "Historical percentage of measurable impressions that were viewable for the line item.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "viewabilitySignal" : {
+      "title" : "Viewability Signal",
+      "description" : "Indicates whether the line item's viewability performance is strong or weak relative to the portfolio benchmark.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "viewabilityVersusBenchmarkPercentage" : {
+      "title" : "Viewability Versus Benchmark Percentage",
+      "description" : "Percentage difference between the line item's viewability and the portfolio median viewability benchmark.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "yieldSignal" : {
+      "title" : "Yield Signal",
+      "description" : "Indicates whether the line item's CPM/yield performance is strong or weak relative to the portfolio benchmark.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : false,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

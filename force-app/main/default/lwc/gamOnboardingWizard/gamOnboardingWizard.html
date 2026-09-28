@@ -1,0 +1,119 @@
+<template>
+    <lightning-card title="Connect Your Google Ad Manager Account" icon-name="standard:connected_apps">
+        <div class="slds-p-around_medium">
+
+            <template if:true={showPasteStep}>
+                <p class="slds-text-body_regular slds-m-bottom_small">
+                    Paste the full contents of your Google service account JSON key file below.
+                    This is processed once, in memory, to generate a Salesforce-compatible
+                    certificate file - it is never stored, logged, or viewable by anyone
+                    after this step, including our own team.
+                </p>
+
+                <lightning-textarea
+                    label="Service Account JSON Key"
+                    placeholder="Paste the JSON file contents here, starting with type: service_account"
+                    value={serviceAccountJsonText}
+                    onchange={handleJsonChange}
+                    rows="10">
+                </lightning-textarea>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button
+                        variant="brand"
+                        label="Convert and Continue"
+                        onclick={handleConvert}
+                        disabled={isConverting}>
+                    </lightning-button>
+                    <template if:true={isConverting}>
+                        <lightning-spinner alternative-text="Converting..." size="small" class="slds-m-left_small">
+                        </lightning-spinner>
+                    </template>
+                </div>
+            </template>
+
+            <template if:true={showErrorStep}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+                <div class="slds-m-top_medium">
+                    <lightning-button label="Try Again" onclick={handleReset}></lightning-button>
+                </div>
+            </template>
+
+            <template if:true={showResultStep}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="alert">
+                    <span class="slds-assistive-text">Success</span>
+                    <h2>Your keystore file is ready.</h2>
+                </div>
+
+                <ol class="slds-p-top_medium">
+                    <li class="slds-m-bottom_small">
+                        <strong>Download your keystore file</strong> (already done automatically -
+                        check your Downloads folder for <code>gam_service_account_key.jks</code>).
+                        <div class="slds-m-top_x-small">
+                            <lightning-button label="Download Again" onclick={handleDownloadAgain}></lightning-button>
+                        </div>
+                    </li>
+                    <li class="slds-m-bottom_small">
+                        <strong>Keystore password (copy this):</strong>
+                        <div class="slds-box slds-theme_shade slds-m-top_x-small">
+                            <code>{keystorePassword}</code>
+                            <lightning-button-icon
+                                icon-name="utility:copy"
+                                alternative-text="Copy password"
+                                onclick={handleCopyPassword}
+                                class="slds-m-left_small">
+                            </lightning-button-icon>
+                        </div>
+                    </li>
+                    <li class="slds-m-bottom_small">
+                        <strong>Import it into Salesforce:</strong>
+                        <a href={importFromKeystoreUrl} target="_blank">
+                            Open Certificate and Key Management &rarr; Import from Keystore
+                        </a>
+                        - select the downloaded file and paste the password above.
+                    </li>
+                    <li class="slds-m-bottom_small">
+                        Once imported, come back here and continue to the next step to finish
+                        connecting your GAM network automatically.
+                    </li>
+                </ol>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button variant="brand" label="I've Imported It - Continue" onclick={handleContinueAfterImport}></lightning-button>
+                    <lightning-button label="Start Over" onclick={handleReset} class="slds-m-left_small"></lightning-button>
+                </div>
+            </template>
+
+            <template if:true={showProvisioningStep}>
+                <div class="slds-align_absolute-center slds-p-vertical_large">
+                    <lightning-spinner alternative-text="Setting up..." size="medium"></lightning-spinner>
+                </div>
+                <p class="slds-text-align_center slds-text-body_regular">{provisioningStatusMessage}</p>
+            </template>
+
+            <template if:true={showDoneStep}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="alert">
+                    <span class="slds-assistive-text">Success</span>
+                    <h2>Your Google Ad Manager account is connected.</h2>
+                </div>
+
+                <div class="slds-box slds-theme_shade slds-m-top_medium">
+                    <p><strong>Network:</strong> {networkDisplayName}</p>
+                    <p><strong>Network Code:</strong> {networkCode}</p>
+                </div>
+
+                <p class="slds-m-top_medium slds-text-body_regular">
+                    Setup is complete. You can now use GAM-connected features in the Optimization Agent.
+                </p>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button label="Start Over" onclick={handleReset}></lightning-button>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

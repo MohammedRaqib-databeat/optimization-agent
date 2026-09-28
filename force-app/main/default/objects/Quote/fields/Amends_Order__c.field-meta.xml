@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amends_Order__c</fullName>
+    <label>Amends Order</label>
+    <referenceTo>Order</referenceTo>
+    <relationshipLabel>Amendment Quotes</relationshipLabel>
+    <relationshipName>Amendment_Quotes</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Set when this Quote is an Optimization Agent amendment - the real Order it proposes to update once approved.</description>
+</CustomField>

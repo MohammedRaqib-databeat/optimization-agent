@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>At_Risk_Below_Median_Count__c</fullName>
+    <label>At Risk - Below Median Signal Count</label>
+    <type>Number</type>
+    <precision>2</precision>
+    <scale>0</scale>
+    <required>true</required>
+    <description>Minimum number of benchmark signals (engagement/supply/yield) below portfolio median, combined with delivery below goal, to classify as At Risk.</description>
+</CustomField>

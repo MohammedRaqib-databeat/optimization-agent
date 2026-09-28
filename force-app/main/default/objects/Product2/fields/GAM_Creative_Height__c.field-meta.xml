@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GAM_Creative_Height__c</fullName>
+    <label>GAM Creative Height (px)</label>
+    <precision>6</precision>
+    <scale>0</scale>
+    <required>false</required>
+    <type>Number</type>
+    <unique>false</unique>
+    <description>Creative height in pixels for this product's Line Items in Google Ad Manager. Leave blank to default to 250.</description>
+</CustomField>

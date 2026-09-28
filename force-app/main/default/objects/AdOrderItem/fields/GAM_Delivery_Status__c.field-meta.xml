@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GAM_Delivery_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>GAM Delivery Status</label>
+    <length>60</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+    <description>Real Line Item status (e.g. DELIVERING, COMPLETED, PAUSED) as of the last sync from Google Ad Manager.</description>
+</CustomField>

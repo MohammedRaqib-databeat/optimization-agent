@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Groups performance by creative across whatever line items use it, optionally scoped to one advertiser or order, and flags whether each creative is meeting the goal of the line items it appears on.</description>
+    <developerName>Summarize_Creative_Performance</developerName>
+    <invocationTarget>CampaignCreativeRollupService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Summarize_Creative_Performance</localDeveloperName>
+    <masterLabel>Summarize Creative Performance</masterLabel>
+    <progressIndicatorMessage>Aggregating creative performance...</progressIndicatorMessage>
+</GenAiFunction>

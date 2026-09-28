@@ -1,0 +1,14 @@
+{
+  "required" : [ "lineItemId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "lineItemId" : {
+      "title" : "Line Item ID",
+      "description" : "The line item identifier analyzed by the optimization engine.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

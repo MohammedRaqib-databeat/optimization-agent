@@ -1,0 +1,35 @@
+{
+  "required" : [ "advertiserName", "lineItemId", "suggestionSummary" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "advertiserName" : {
+      "title" : "Advertiser Name",
+      "description" : "The advertiser this line item belongs to.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "lineItemId" : {
+      "title" : "Source Line Item ID",
+      "description" : "The GAM/CSV Line Item ID the suggestion was generated for.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "suggestedBudget" : {
+      "title" : "Suggested Budget",
+      "description" : "Optional budget/spend estimate for this change, if the evidence included one.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "suggestionSummary" : {
+      "title" : "Suggestion Summary",
+      "description" : "Plain-English description of the one suggestion being applied, e.g. \"Expand targeting to include the Afternoon daypart (12:00-17:59)\".",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

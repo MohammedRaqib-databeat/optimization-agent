@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Resolves free text (an advertiser name, an order name, or a Line Item ID) into the underlying identifiers the forecasting, optimization, and rollup actions require. Reports when more than one candidate matches so the agent can ask the user to disambiguate instead of guessing.</description>
+    <developerName>Resolve_Campaign_Entity_From_Text</developerName>
+    <invocationTarget>CampaignEntityResolutionService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Resolve_Campaign_Entity_From_Text</localDeveloperName>
+    <masterLabel>Resolve Campaign Entity From Text</masterLabel>
+    <progressIndicatorMessage>Looking up campaign records...</progressIndicatorMessage>
+</GenAiFunction>

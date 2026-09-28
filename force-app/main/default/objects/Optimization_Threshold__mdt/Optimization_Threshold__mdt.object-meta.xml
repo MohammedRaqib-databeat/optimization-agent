@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Optimization Threshold</label>
+    <pluralLabel>Optimization Thresholds</pluralLabel>
+    <visibility>Public</visibility>
+    <description>Tunable thresholds for the Optimization Agent's Health/Urgency classification and the deterministic decision engine, so these are configurable without an Apex deployment.</description>
+</CustomObject>

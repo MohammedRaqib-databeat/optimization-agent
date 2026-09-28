@@ -1,0 +1,36 @@
+Category,Metric/Dimension,GAM API Field,API Source,Notes
+Metric,Impressions,AD_SERVER_IMPRESSIONS,ReportService.Column,Core delivery volume
+Metric,Clicks,AD_SERVER_CLICKS,ReportService.Column,
+Metric,CTR,AD_SERVER_CTR,ReportService.Column,
+Metric,Ad Requests,TOTAL_AD_REQUESTS,ReportService.Column,Includes dynamic allocation
+Metric,Code Served Count,TOTAL_CODE_SERVED_COUNT,ReportService.Column,Closest documented equivalent to matched ad requests
+Metric,Unmatched Ad Requests,TOTAL_UNMATCHED_AD_REQUESTS,ReportService.Column,Ad not returned by ad server
+Metric,Unfilled Impressions,TOTAL_INVENTORY_LEVEL_UNFILLED_IMPRESSIONS,ReportService.Column,
+Metric,Fill Rate,TOTAL_FILL_RATE,ReportService.Column,
+Metric,Total Revenue,AD_SERVER_ALL_REVENUE,ReportService.Column,
+Metric,Line Item Level Revenue,TOTAL_LINE_ITEM_LEVEL_ALL_REVENUE,ReportService.Column,
+Metric,Average eCPM (with CPD),AD_SERVER_WITH_CPD_AVERAGE_ECPM,ReportService.Column,
+Metric,Line Item Level Average eCPM (with CPD),TOTAL_LINE_ITEM_LEVEL_WITH_CPD_AVERAGE_ECPM,ReportService.Column,
+Metric,Active View Viewable Impressions Rate,TOTAL_ACTIVE_VIEW_VIEWABLE_IMPRESSIONS_RATE,ReportService.Column,
+Metric,Active View Measurable Impressions Rate,TOTAL_ACTIVE_VIEW_MEASURABLE_IMPRESSIONS_RATE,ReportService.Column,
+Metric,Video Viewership Start,VIDEO_VIEWERSHIP_START,ReportService.Column,Only relevant for video/CTV inventory
+Metric,Video Completion Rate,VIDEO_VIEWERSHIP_COMPLETION_RATE,ReportService.Column,Only relevant for video/CTV inventory
+Metric,Expected Delivery Percentage,deliveryIndicator.expectedDeliveryPercentage,LineItemService.LineItemSummary,NOT in Reporting API - separate call; core pacing signal
+Metric,Actual Delivery Percentage,deliveryIndicator.actualDeliveryPercentage,LineItemService.LineItemSummary,NOT in Reporting API - separate call; core pacing signal
+Dimension,Line Item ID,LINE_ITEM_ID,ReportService.Dimension,Primary join key back to LineItemService
+Dimension,Line Item Name,LINE_ITEM_NAME,ReportService.Dimension,
+Dimension,Order ID,ORDER_ID,ReportService.Dimension,
+Dimension,Order Name,ORDER_NAME,ReportService.Dimension,
+Dimension,Order Delivery Status,ORDER_DELIVERY_STATUS,ReportService.Dimension,
+Dimension,Advertiser ID,ADVERTISER_ID,ReportService.Dimension,
+Dimension,Advertiser Name,ADVERTISER_NAME,ReportService.Dimension,
+Dimension,Ad Unit ID,AD_UNIT_ID,ReportService.Dimension,
+Dimension,Ad Unit Name,AD_UNIT_NAME,ReportService.Dimension,
+Dimension,Placement ID,PLACEMENT_ID,ReportService.Dimension,
+Dimension,Placement Name,PLACEMENT_NAME,ReportService.Dimension,
+Dimension,Country Code,COUNTRY_CODE,ReportService.Dimension,
+Dimension,Metro Name (DMA equivalent),METRO_NAME,ReportService.Dimension,
+Dimension,Device Category Name,DEVICE_CATEGORY_NAME,ReportService.Dimension,
+Dimension,Creative Size,CREATIVE_SIZE,ReportService.Dimension,
+Dimension,Date,DATE,ReportService.Dimension,Daily grain, matches current CSV cadence
+Dimension,Hour,HOUR,ReportService.Dimension,Network timezone; use for intraday pacing checks

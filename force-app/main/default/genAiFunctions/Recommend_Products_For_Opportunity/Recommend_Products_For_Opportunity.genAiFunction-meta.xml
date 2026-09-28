@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Recommends and ranks Media Cloud products for a given Opportunity based on the linked campaign request's budget and objective. Read-only - does not add products to the Opportunity or claim inventory availability. Safe to call speculatively to show the user candidates.</description>
+    <developerName>Recommend_Products_For_Opportunity</developerName>
+    <invocationTarget>CampaignProductSelectorService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Recommend_Products_For_Opportunity</localDeveloperName>
+    <masterLabel>Recommend Products For Opportunity</masterLabel>
+    <progressIndicatorMessage>Finding matching products for this campaign...</progressIndicatorMessage>
+</GenAiFunction>

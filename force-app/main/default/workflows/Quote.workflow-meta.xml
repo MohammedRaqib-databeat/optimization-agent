@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Approve_Media_Plan_Quote</fullName>
+        <field>Status</field>
+        <name>Approve Media Plan Quote</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <literalValue>Approved</literalValue>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reject_Media_Plan_Quote</fullName>
+        <field>Status</field>
+        <name>Reject Media Plan Quote</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <literalValue>Rejected</literalValue>
+        <protected>false</protected>
+    </fieldUpdates>
+</Workflow>

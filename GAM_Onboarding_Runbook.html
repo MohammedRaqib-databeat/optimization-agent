@@ -1,0 +1,706 @@
+<title>GAM Onboarding Runbook</title>
+<meta name="description" content="Step-by-step handoff for deploying the pure-Apex Google Ad Manager onboarding automation to a new Salesforce org.">
+<style>
+  :root{
+    --ink:#1b2333;
+    --ink-soft:#4a5468;
+    --bg:#f7f5f0;
+    --surface:#ffffff;
+    --surface-2:#f0eee7;
+    --border:#dcd8cd;
+    --accent:#2e5f8a;
+    --accent-soft:#dfe9f1;
+    --accent-ink:#193a55;
+    --good:#2f7a4f;
+    --good-bg:#e4f2e9;
+    --warn:#96631a;
+    --warn-bg:#f7ecd8;
+    --crit:#a3372f;
+    --crit-bg:#fbe7e5;
+    --code-bg:#1c2230;
+    --code-ink:#e7ecf5;
+    --code-accent:#8fc6ff;
+    --rule:#c9c3b3;
+  }
+  :root:not([data-theme="light"])[data-theme="dark"],
+  :root[data-theme="dark"]{
+    --ink:#e9e6de;
+    --ink-soft:#b3ada0;
+    --bg:#15181d;
+    --surface:#1c2027;
+    --surface-2:#20242b;
+    --border:#343a44;
+    --accent:#7bb0dd;
+    --accent-soft:#233241;
+    --accent-ink:#bfe0ff;
+    --good:#7fce9c;
+    --good-bg:#1c2f24;
+    --warn:#e0b25f;
+    --warn-bg:#332a17;
+    --crit:#e58a82;
+    --crit-bg:#3a2220;
+    --code-bg:#0f1218;
+    --code-ink:#dbe4f2;
+    --code-accent:#8fc6ff;
+    --rule:#3a4048;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e9e6de;
+      --ink-soft:#b3ada0;
+      --bg:#15181d;
+      --surface:#1c2027;
+      --surface-2:#20242b;
+      --border:#343a44;
+      --accent:#7bb0dd;
+      --accent-soft:#233241;
+      --accent-ink:#bfe0ff;
+      --good:#7fce9c;
+      --good-bg:#1c2f24;
+      --warn:#e0b25f;
+      --warn-bg:#332a17;
+      --crit:#e58a82;
+      --crit-bg:#3a2220;
+      --code-bg:#0f1218;
+      --code-ink:#dbe4f2;
+      --code-accent:#8fc6ff;
+      --rule:#3a4048;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    padding: 0 16px;
+  }
+  .page{
+    max-width: 780px;
+    margin: 0 auto;
+    padding-block: 40px 80px;
+  }
+
+  h1,h2,h3{
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--ink);
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  .masthead{
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .masthead .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .masthead h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .masthead p{
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 60ch;
+    margin: 0;
+  }
+  .masthead .meta{
+    display:flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .callout{
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 20px 0;
+    font-size: 14.5px;
+    border: 1px solid var(--border);
+  }
+  .callout.crit{ background: var(--crit-bg); border-color: var(--crit); color: var(--ink); }
+  .callout.warn{ background: var(--warn-bg); border-color: var(--warn); color: var(--ink); }
+  .callout.good{ background: var(--good-bg); border-color: var(--good); color: var(--ink); }
+  .callout strong{ display:block; margin-bottom: 4px; }
+  .callout.crit strong{ color: var(--crit); }
+  .callout.warn strong{ color: var(--warn); }
+  .callout.good strong{ color: var(--good); }
+
+  .toc{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 28px 0 40px;
+  }
+  .toc .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .toc ol{
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 24px;
+    font-size: 14px;
+  }
+  .toc li{ margin-bottom: 6px; break-inside: avoid; }
+  .toc a{ color: var(--ink); text-decoration: none; }
+  .toc a:hover{ color: var(--accent); }
+
+  .phase{
+    display: flex;
+    gap: 18px;
+    margin: 0 0 8px;
+    padding-top: 44px;
+    break-inside: avoid-page;
+  }
+  .phase-num{
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .phase-head{ flex: 1; }
+  .phase-head .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .phase-head h2{
+    font-size: 22px;
+    margin: 2px 0 6px;
+  }
+  .phase-head .sub{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 62ch;
+  }
+
+  .phase-body{
+    margin: 18px 0 0 58px;
+  }
+  @media (max-width: 520px){
+    .phase-body{ margin-left: 0; }
+    .toc ol{ columns: 1; }
+  }
+
+  .step{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .step-title{
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .step-title .tag{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+  .step p{ margin: 6px 0; font-size: 14.5px; color: var(--ink); }
+  .step p.dim{ color: var(--ink-soft); font-size: 13.5px; }
+
+  code{
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--surface-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+    color: var(--accent-ink);
+  }
+  pre{
+    background: var(--code-bg);
+    color: var(--code-ink);
+    padding: 14px 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  pre code{
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+  pre .cmt{ color: #8a94a8; }
+  pre .fn{ color: var(--code-accent); }
+
+  .filelist{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .filelist div{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    padding: 6px 10px;
+    background: var(--surface-2);
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .filelist span.role{
+    color: var(--ink-soft);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 12.5px;
+    text-align: right;
+  }
+
+  .flow{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  .flow .node{
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    padding: 7px 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .flow .arrow{ color: var(--ink-soft); }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td{
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+
+  .divider{
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 44px 0 0;
+  }
+
+  footer{
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .print-btn{
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    z-index: 10;
+  }
+  .print-btn:hover{ filter: brightness(1.08); }
+
+  @media print{
+    .print-btn, .toc{ display: none; }
+    body{ background: #fff; padding: 0; }
+    .page{ max-width: none; padding: 0; }
+    .step, .callout{ break-inside: avoid; }
+    .phase{ break-before: page; padding-top: 0; }
+    .phase:first-of-type{ break-before: avoid; }
+    * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="eyebrow">Internal Runbook &middot; Media Cloud AppExchange Platform</div>
+    <h1>Google Ad Manager Onboarding Automation</h1>
+    <p>How to deploy the pure-Apex GAM authentication wizard to a new Salesforce org, so any client admin can connect their own GAM account with no CLI, no JVM, and no external services.</p>
+    <div class="meta">
+      <span>Prepared by: Mohammed Raqib</span>
+      <span>September 24, 2026</span>
+      <span>Runtime: 100% Apex + LWC</span>
+      <span>External infra required: none</span>
+      <span>Manual steps: 1</span>
+    </div>
+  </div>
+
+  <div class="callout crit">
+    <strong>Before you start</strong>
+    Never paste a real, production GAM service-account JSON key into a chat tool, ticket, or shared doc while testing this. Use a disposable Google Cloud service account for test runs. If a real key is ever exposed this way, rotate it immediately in Google Cloud Console (delete the old key, generate a new one).
+  </div>
+
+  <div class="toc">
+    <div class="eyebrow">On this page</div>
+    <ol>
+      <li><a href="#phase-1">How the automation works</a></li>
+      <li><a href="#phase-2">Prerequisites</a></li>
+      <li><a href="#phase-3">Deploy the baseline components</a></li>
+      <li><a href="#phase-4">Client step: generate the keystore</a></li>
+      <li><a href="#phase-5">Manual step: import into Setup</a></li>
+      <li><a href="#phase-6">Auto-provisioning: finish the connection</a></li>
+      <li><a href="#phase-7">Verify it worked</a></li>
+      <li><a href="#phase-8">Troubleshooting</a></li>
+      <li><a href="#phase-9">What's been validated</a></li>
+    </ol>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase" id="phase-1">
+    <div class="phase-num">1</div>
+    <div class="phase-head">
+      <div class="eyebrow">Context</div>
+      <h2>How the automation works</h2>
+      <p class="sub">Three problems stood between "client has a GAM JSON key" and "Salesforce can call the GAM API," and each one is solved by a different piece of this package.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="flow">
+      <span class="node">Client pastes JSON</span>
+      <span class="arrow">&rarr;</span>
+      <span class="node">Apex builds .jks file</span>
+      <span class="arrow">&rarr;</span>
+      <span class="node">Client imports it (Setup)</span>
+      <span class="arrow">&rarr;</span>
+      <span class="node">Apex deploys metadata</span>
+      <span class="arrow">&rarr;</span>
+      <span class="node">Apex detects GAM network</span>
+      <span class="arrow">&rarr;</span>
+      <span class="node">Connected</span>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Problem 1 &mdash; Salesforce only accepts real JKS files<span class="tag">solved by GAMJKSBuilder.cls</span></div>
+      <p>Setup's "Import from Keystore" screen rejects everything except genuine Java KeyStore format &mdash; no API exists to upload one directly. <code>GAMJKSBuilder.cls</code> builds a real JKS binary entirely in Apex: it parses the client's pasted key, constructs and self-signs an X.509 certificate from scratch, encrypts the key with Java's proprietary keystore cipher, and assembles the container &mdash; validated byte-for-byte against real <code>keytool</code> output during development.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Problem 2 &mdash; No API creates External/Named Credentials<span class="tag">solved by GAMOnboardingProvisioningService.cls</span></div>
+      <p>Once the client imports the certificate, someone still has to create the External Credential, Named Credential, and Permission Set that actually use it. Neither is Tooling-API-insertable, so this class builds their metadata XML in Apex, packages it into a real ZIP (via a hand-built ZIP writer, since Apex has no compression API), and deploys it through a raw SOAP call to the org's own Metadata API &mdash; using the running admin's own session, no stored credentials anywhere.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Problem 3 &mdash; The client doesn't know their own GAM network code<span class="tag">solved by GAMNetworkServiceClient.discoverNetwork()</span></div>
+      <p>GAM's API normally requires a network code just to make a call &mdash; a chicken-and-egg problem for a brand-new connection. <code>getAllNetworks()</code> is the one GAM operation that works without a network code supplied, so it's used once, immediately after the credential is live, to detect and store the real code automatically.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 2 -->
+  <div class="phase" id="phase-2">
+    <div class="phase-num">2</div>
+    <div class="phase-head">
+      <div class="eyebrow">Before you begin</div>
+      <h2>Prerequisites</h2>
+      <p class="sub">What you need on hand before deploying to a new org.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">Access &amp; tools</div>
+      <table>
+        <tr><th>Need</th><th>Notes</th></tr>
+        <tr><td>Salesforce CLI (<code>sf</code>)</td><td>Any recent version; used to authenticate and deploy</td></tr>
+        <tr><td>System Administrator access</td><td>To the target Salesforce org, for both deployment and running the wizard</td></tr>
+        <tr><td>This repo's <code>force-app/</code> source</td><td>Contains all Apex classes, the LWC, and the custom setting listed in Phase 3</td></tr>
+        <tr><td>A GAM service account JSON key</td><td>For testing, use a disposable one &mdash; see the warning above</td></tr>
+      </table>
+    </div>
+    <div class="callout warn">
+      <strong>Do not pre-deploy these three files</strong>
+      <code>externalCredentials/GAM_API_Cred_OAuth.externalCredential-meta.xml</code>, <code>namedCredentials/GAM_API.namedCredential-meta.xml</code>, and <code>permissionsets/GAM_API_Access.permissionset-meta.xml</code> all reference a certificate named <code>gam_service_account_key</code> that doesn't exist yet in a new org. Deploying them upfront will fail. The wizard creates all three automatically, at the right time, in Phase 6.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 3 -->
+  <div class="phase" id="phase-3">
+    <div class="phase-num">3</div>
+    <div class="phase-head">
+      <div class="eyebrow">One-time setup</div>
+      <h2>Deploy the baseline components</h2>
+      <p class="sub">Everything that needs to exist before the client ever opens the wizard.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">What gets deployed</div>
+      <div class="filelist">
+        <div>ApexMinimalZip.cls <span class="role">ZIP writer (no compression API in Apex)</span></div>
+        <div>GAMJKSBuilder.cls <span class="role">Builds the JKS keystore file</span></div>
+        <div>GAMKeyConversionController.cls <span class="role">LWC-facing wrapper for the builder</span></div>
+        <div>GAMNetworkServiceClient.cls <span class="role">Connectivity check + network auto-detection</span></div>
+        <div>GAMNetworkServiceStub.cls <span class="role">Generated GAM SOAP client</span></div>
+        <div>AsyncGAMNetworkServiceStub.cls <span class="role">Generated GAM SOAP client (async variant)</span></div>
+        <div>GAMOnboardingProvisioningService.cls <span class="role">Deploys credentials via Metadata API</span></div>
+        <div>GAM_Config__c <span class="role">Hierarchy custom setting &mdash; stores the detected network code</span></div>
+        <div>gamOnboardingWizard (LWC) <span class="role">The screen the client actually uses</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Commands<span class="tag">run from repo root</span></div>
+      <pre><code><span class="cmt"># 1. authenticate to the target org</span>
+sf org login web --alias TARGET_ORG
+
+<span class="cmt"># 2. deploy the baseline components</span>
+sf project deploy start --target-org TARGET_ORG \
+  --source-dir force-app/main/default/classes/ApexMinimalZip.cls \
+  --source-dir force-app/main/default/classes/GAMJKSBuilder.cls \
+  --source-dir force-app/main/default/classes/GAMKeyConversionController.cls \
+  --source-dir force-app/main/default/classes/GAMNetworkServiceClient.cls \
+  --source-dir force-app/main/default/classes/GAMNetworkServiceStub.cls \
+  --source-dir force-app/main/default/classes/AsyncGAMNetworkServiceStub.cls \
+  --source-dir force-app/main/default/classes/GAMOnboardingProvisioningService.cls \
+  --source-dir force-app/main/default/objects/GAM_Config__c \
+  --source-dir force-app/main/default/lwc/gamOnboardingWizard</code></pre>
+      <p class="dim">Confirm the deploy result reports <code>Succeeded</code> before moving on.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Add the wizard to a page</div>
+      <p>Drag the <strong>GAM Onboarding Wizard</strong> Lightning component onto an App Page, Home Page, or Record Page via Lightning App Builder, and give the client admin access to that page.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 4 -->
+  <div class="phase" id="phase-4">
+    <div class="phase-num">4</div>
+    <div class="phase-head">
+      <div class="eyebrow">Client-facing &middot; no CLI needed</div>
+      <h2>Generate the keystore</h2>
+      <p class="sub">This is the part the client actually does. No terminal, no JVM, no manual conversion.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">Steps</div>
+      <p><strong>1.</strong> Open the GAM Onboarding Wizard page.</p>
+      <p><strong>2.</strong> Paste the full contents of the GAM service account JSON file into the text box.</p>
+      <p><strong>3.</strong> Click <strong>Convert and Continue</strong>.</p>
+      <p><strong>4.</strong> The browser automatically downloads a <code>.jks</code> file, and a keystore password is shown on screen with a copy button.</p>
+      <p class="dim">Behind the scenes: <code>GAMJKSBuilder.cls</code> extracts the private key, builds and self-signs a certificate, encrypts the key, and assembles the keystore &mdash; all in a single Apex transaction, nothing written to any object or log.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 5 -->
+  <div class="phase" id="phase-5">
+    <div class="phase-num">5</div>
+    <div class="phase-head">
+      <div class="eyebrow">The one unavoidable manual step</div>
+      <h2>Import into Setup</h2>
+      <p class="sub">Salesforce provides no API for this &mdash; confirmed by direct testing against the Metadata and Tooling APIs. It is a single click.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">Steps</div>
+      <p><strong>1.</strong> The wizard's result screen links directly to <strong>Setup &rarr; Certificate and Key Management</strong>.</p>
+      <p><strong>2.</strong> Click <strong>Import from Keystore</strong>.</p>
+      <p><strong>3.</strong> Select the downloaded <code>.jks</code> file and paste in the password from the previous step.</p>
+      <p><strong>4.</strong> Click <strong>Import</strong>. You should see a new certificate named <code>gam_service_account_key</code>, Self-Signed, with Exportable Private Key checked.</p>
+      <p><strong>5.</strong> Return to the wizard and click <strong>I've Imported It &mdash; Continue</strong>.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 6 -->
+  <div class="phase" id="phase-6">
+    <div class="phase-num">6</div>
+    <div class="phase-head">
+      <div class="eyebrow">Fully automatic from here</div>
+      <h2>Auto-provisioning finishes the connection</h2>
+      <p class="sub">Clicking Continue runs four Apex calls in sequence. The wizard shows a spinner with live status text through all of them.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">What happens, in order</div>
+      <table>
+        <tr><th>Step</th><th>Apex method</th><th>What it does</th></tr>
+        <tr><td>1</td><td><code>startProvisioning()</code></td><td>Builds and deploys the External Credential, Named Credential, and Permission Set metadata via the Metadata API</td></tr>
+        <tr><td>2</td><td><code>checkStatus()</code></td><td>Polled every 3 seconds until the deploy reports Succeeded or Failed</td></tr>
+        <tr><td>3</td><td><code>assignPermissionSet()</code></td><td>Grants the running admin access to the new External Credential principal</td></tr>
+        <tr><td>4</td><td><code>discoverNetwork()</code></td><td>Calls GAM's <code>getAllNetworks()</code>, stores the detected network code in <code>GAM_Config__c</code></td></tr>
+      </table>
+      <p class="dim">These run as four separate Apex round trips, not one transaction &mdash; Salesforce disallows a callout in the same transaction as a preceding DML statement, and steps 3 and 4 are exactly that combination.</p>
+    </div>
+    <div class="step">
+      <div class="step-title">Success screen</div>
+      <p>The wizard ends on a confirmation screen showing the detected GAM network name and code. At that point the connection is fully live and usable by any Apex code that calls the <code>GAM_API</code> Named Credential.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 7 -->
+  <div class="phase" id="phase-7">
+    <div class="phase-num">7</div>
+    <div class="phase-head">
+      <div class="eyebrow">Confirm it actually works</div>
+      <h2>Verify the connection</h2>
+      <p class="sub">Run this from Setup &rarr; Apex &rarr; Execute Anonymous, or via the CLI, to confirm real GAM data comes back.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">Anonymous Apex</div>
+      <pre><code><span class="fn">GAMNetworkServiceClient.GAMConnectionResult</span> result =
+    <span class="fn">GAMNetworkServiceClient.getCurrentNetwork</span>();
+
+System.debug(result);</code></pre>
+      <p>A successful result looks like:</p>
+      <pre><code>GAMConnectionResult:[
+  currencyCode=USD,
+  errorMessage=null,
+  networkCode=&lt;real network code&gt;,
+  networkDisplayName=&lt;real network name&gt;,
+  success=true,
+  timeZone=&lt;network time zone&gt;
+]</code></pre>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 8 -->
+  <div class="phase" id="phase-8">
+    <div class="phase-num">8</div>
+    <div class="phase-head">
+      <div class="eyebrow">If something goes wrong</div>
+      <h2>Troubleshooting</h2>
+      <p class="sub">Errors actually encountered while building and testing this, and what they mean.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title"><code>Keystore file is corrupted</code></div>
+      <p>The file selected in Setup wasn't genuine JKS format &mdash; PKCS12 and other formats are rejected outright. Re-download from the wizard; don't substitute a manually-generated file.</p>
+    </div>
+    <div class="step">
+      <div class="step-title"><code>AuthenticationError.NETWORK_CODE_REQUIRED</code></div>
+      <p>Expected if you call <code>getCurrentNetwork()</code> before a network code is known. Use <code>discoverNetwork()</code> instead for a brand-new connection &mdash; it uses <code>getAllNetworks()</code>, which doesn't require one.</p>
+    </div>
+    <div class="step">
+      <div class="step-title"><code>invalid_grant: account not found</code> (from Google)</div>
+      <p>The Salesforce side worked correctly and reached Google's token endpoint &mdash; this specific error means the service account itself isn't real/registered, or hasn't been added as a user inside the target GAM network yet. Add its email under GAM &rarr; Admin &rarr; Access &amp; authorization &rarr; Users.</p>
+    </div>
+    <div class="step">
+      <div class="step-title"><code>You have uncommitted work pending. Please commit or rollback before calling out</code></div>
+      <p>A callout was attempted in the same transaction as a preceding DML statement. This is a platform governor rule, not a bug &mdash; if you're scripting a test of your own, run <code>assignPermissionSet()</code> and <code>discoverNetwork()</code> as separate Apex executions, exactly as the LWC does.</p>
+    </div>
+    <div class="step">
+      <div class="step-title">Metadata deploy fails referencing <code>gam_service_account_key</code></div>
+      <p>The certificate hasn't been imported yet (Phase 5), or was imported under a different name. The name must be exactly <code>gam_service_account_key</code> &mdash; this is what the wizard names it automatically, so this only happens if a certificate was imported manually outside the wizard flow.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 9 -->
+  <div class="phase" id="phase-9">
+    <div class="phase-num">9</div>
+    <div class="phase-head">
+      <div class="eyebrow">Evidence, not assumption</div>
+      <h2>What's been validated</h2>
+      <p class="sub">Every claim in this document was verified against a live org before being written down. Summary of what was tested and how.</p>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-title">JKS keystore generation<span class="tag">GAMJKSBuilder.cls</span></div>
+      <p>Generated a keystore from a throwaway RSA key using this Apex class, then validated it against real OpenJDK <code>keytool</code>: confirmed the certificate parses correctly, and round-tripped the private key to PKCS12 to confirm the recovered RSA modulus is byte-identical to the original key. This proves both the container format and the encryption algorithm are correct, not just superficially well-formed.</p>
+    </div>
+    <div class="step">
+      <div class="step-title">Metadata auto-provisioning on a genuinely blank org<span class="tag">GAMOnboardingProvisioningService.cls</span></div>
+      <p>Created a brand-new Salesforce Developer Edition org with none of this metadata present, ran the full wizard flow end to end (JKS generation &rarr; manual import &rarr; automatic deploy of External Credential, Named Credential, and Permission Set from nothing), and confirmed the deploy succeeded and the permission set assignment worked. This is the true first-time-client scenario, not a redeploy over already-working configuration.</p>
+    </div>
+    <div class="step">
+      <div class="step-title">Real GAM authentication<span class="tag">GAMNetworkServiceClient.cls</span></div>
+      <p>In the original working org, a real (already GAM-registered) service account successfully authenticated through this exact chain and returned live network data via <code>discoverNetwork()</code>. In the blank test org, a disposable/unregistered service account was used to confirm the request correctly reaches Google's real token endpoint and is evaluated there &mdash; it was rejected only because that specific test account wasn't GAM-registered, which is the expected, correct behavior on Google's side, not a defect in this automation.</p>
+    </div>
+    <div class="callout good">
+      <strong>Net result</strong>
+      Every stage of the pipeline &mdash; keystore generation, metadata provisioning on a blank org, and real authentication against Google's servers &mdash; has been independently verified. Combined, they cover the full chain from a pasted JSON file to a live, working GAM connection.
+    </div>
+  </div>
+
+  <footer>
+    <span>Media Cloud AppExchange Platform &middot; GAM Onboarding Automation</span>
+    <span>Prepared by Mohammed Raqib &middot; September 24, 2026</span>
+  </footer>
+
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates a Draft Quote Line Item reflecting one human-approved optimization suggestion. Only call this after the user has confirmed that specific suggestion - this action requires Agentforce confirmation, so it must never be called speculatively or for suggestions the user has not chosen.</description>
+    <developerName>Apply_Optimization_Suggestion</developerName>
+    <invocationTarget>CampaignSuggestionApplicationService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>true</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Apply_Optimization_Suggestion</localDeveloperName>
+    <masterLabel>Apply Optimization Suggestion</masterLabel>
+    <progressIndicatorMessage>Creating a draft quote line for this suggestion...</progressIndicatorMessage>
+</GenAiFunction>

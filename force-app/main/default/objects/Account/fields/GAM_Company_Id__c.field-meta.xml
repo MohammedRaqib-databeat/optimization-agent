@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GAM_Company_Id__c</fullName>
+    <label>GAM Company ID</label>
+    <type>Text</type>
+    <length>40</length>
+    <required>false</required>
+    <description>The Google Ad Manager Company ID (advertiser) this Account maps to. Find-or-created automatically by GAMOrderPushService the first time an Order for this Account is pushed to GAM.</description>
+</CustomField>

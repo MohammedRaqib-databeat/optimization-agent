@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Optimization Agent Access</label>
+    <description>Grants access to the Optimization Agent's scheduler-driven records: change requests (human-in-the-loop approval) and the audit log, both stored as Case records (default record type) with Optimization_*__c custom fields.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+
+    <fieldPermissions>
+        <field>Case.Optimization_Line_Item_Id__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Advertiser__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Event_Type__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Action_Type__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Current_Pacing_Percentage__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Pacing_Adjustment_Pct__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Case.Optimization_Health__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Account.GAM_Company_Id__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Product2.GAM_Ad_Unit_Name__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Product2.GAM_Creative_Width__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Product2.GAM_Creative_Height__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>AdOrderItem.GAM_Delivered_Impressions__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>AdOrderItem.GAM_Delivered_Clicks__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>AdOrderItem.GAM_Delivery_Status__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>AdOrderItem.GAM_Last_Synced__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Quote.Amends_Order__c</field>
+        <readable>true</readable><editable>true</editable>
+    </fieldPermissions>
+
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>Optimization_Threshold__mdt</name>
+    </customMetadataTypeAccesses>
+</PermissionSet>

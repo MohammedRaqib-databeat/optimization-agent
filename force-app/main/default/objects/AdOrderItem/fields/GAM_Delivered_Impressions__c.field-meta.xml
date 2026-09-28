@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GAM_Delivered_Impressions__c</fullName>
+    <label>GAM Delivered Impressions</label>
+    <precision>18</precision>
+    <scale>0</scale>
+    <required>false</required>
+    <type>Number</type>
+    <unique>false</unique>
+    <description>Real impressions delivered so far, pulled directly from Google Ad Manager's LineItem stats.</description>
+</CustomField>

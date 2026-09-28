@@ -1,0 +1,20 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "advertiserName" : {
+      "title" : "Advertiser Name",
+      "description" : "Advertiser name to scope creative performance to, when the user asked about one advertiser.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "orderName" : {
+      "title" : "Order Name",
+      "description" : "Order name to scope creative performance to, when the user asked about one order.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

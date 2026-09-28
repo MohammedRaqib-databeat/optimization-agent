@@ -1,0 +1,14 @@
+{
+  "required" : [ "orderName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "orderName" : {
+      "title" : "Order Name",
+      "description" : "The resolved order name.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
